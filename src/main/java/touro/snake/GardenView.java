@@ -1,0 +1,33 @@
+package touro.snake;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GardenView extends JComponent {
+
+    private final Garden garden;
+
+    public GardenView(Garden garden) {
+        this.garden = garden;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        paintGrass();
+        paintFood(g);
+        paintSnake(g);
+    }
+
+    void paintGrass() {
+        throw new UnsupportedOperationException("Not Implemented Yet.");
+    }
+
+    void paintSnake(Graphics g) {
+        throw new UnsupportedOperationException("Not Implemented Yet.");
+    }
+
+    void paintFood(Graphics g) {
+        throw new UnsupportedOperationException("Not Implemented Yet.");
+    }
+}
