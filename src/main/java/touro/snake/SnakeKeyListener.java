@@ -6,11 +6,11 @@ import java.awt.event.KeyEvent;
 /**
  * KeyListener that is responsible for turning the Snake.
  */
-public class SnakeTurnListener extends KeyAdapter {
+public class SnakeKeyListener extends KeyAdapter {
 
     private final Snake snake;
 
-    public SnakeTurnListener(Snake snake) {
+    public SnakeKeyListener(Snake snake) {
         this.snake = snake;
     }
 
@@ -18,6 +18,5 @@ public class SnakeTurnListener extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
         throw new UnsupportedOperationException("Not Implemented Yet.");
-        // turns the head of the snake left or right depending on the key pressed.
     }
 }

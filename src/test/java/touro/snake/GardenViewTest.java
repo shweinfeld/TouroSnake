@@ -20,4 +20,9 @@ public class GardenViewTest {
     public void paintFood() {
         throw new UnsupportedOperationException("Not Implemented Yet.");
     }
+
+    @Test
+    public void paintFood_nullFood() {
+        throw new UnsupportedOperationException("Not Implemented Yet.");
+    }
 }

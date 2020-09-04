@@ -1,5 +1,7 @@
 package touro.snake;
 
+import java.util.Random;
+
 /**
  * Factory class for creating new Food objects within the Garden.
  */

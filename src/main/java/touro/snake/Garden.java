@@ -28,6 +28,7 @@ public class Garden {
 
     /**
      * Moves the snake, checks to see if food has been eaten and creates food if necessary
+     *
      * @return true if the snake is still alive, otherwise false.
      */
     public boolean advance() {
@@ -40,6 +41,7 @@ public class Garden {
 
     /**
      * Moves the Snake, eats the Food or collides with the wall (edges of the Garden).
+     *
      * @return true if the Snake is still alive, otherwise false.
      */
     boolean moveSnake() {

@@ -14,12 +14,12 @@ public class GardenView extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        paintGrass();
+        paintGrass(g);
         paintFood(g);
         paintSnake(g);
     }
 
-    void paintGrass() {
+    void paintGrass(Graphics g) {
         throw new UnsupportedOperationException("Not Implemented Yet.");
     }
 
