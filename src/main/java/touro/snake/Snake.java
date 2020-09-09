@@ -72,7 +72,12 @@ public class Snake {
      */
     public boolean inBounds() {
         // Aufrichtig
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        if(getHead().getX() <= 0 || getHead().getY() <= 0
+           || getHead().getX() >= Garden.WIDTH || getHead().getY() >= Garden.HEIGHT)
+        {
+            return false;
+        }
+        else return true;
     }
 
     /**
