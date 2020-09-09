@@ -18,6 +18,18 @@ public class SnakeKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
         // Liebman
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_LEFT :
+                snake.turnTo(Direction.West);
+
+            case KeyEvent.VK_RIGHT:
+                snake.turnTo(Direction.East);
+
+            case KeyEvent.VK_DOWN:
+                snake.turnTo(Direction.South);
+
+            case KeyEvent.VK_UP:
+                snake.turnTo(Direction.North);
+        }
     }
 }
