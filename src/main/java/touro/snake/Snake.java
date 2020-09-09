@@ -56,7 +56,44 @@ public class Snake {
      */
     public void move() {
         // Weinfeld
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        //get direction
+        Direction direction = snakeHeadStateMachine.getDirection();
+        //save head position in variable previous square
+        Square previousSquare = getHead();
+        int x = previousSquare.getX();
+        int y = previousSquare.getY();
+
+        //move head one square in proper direction (assumes origin is on right corner)
+        Square newSquare = previousSquare;
+        switch (direction) {
+            case North:
+                newSquare = new Square(x, y + 1);
+                break;
+            case East:
+                newSquare = new Square(x - 1, y);
+                squares.set(0, newSquare);
+                break;
+            case South:
+                newSquare = new Square(x, y - 1);
+                break;
+            case West:
+                newSquare = new Square(x + 1, y);
+                break;
+        }
+        squares.set(0, newSquare);
+        //for the rest of the squares in snake:
+        for (int i = 1; i <= squares.size(); i ++) {
+            //save current square position
+            Square currentSquare = squares.get(i);
+
+            //move square into previous square
+            squares.set(i, previousSquare);
+
+            //previous square = current square
+            previousSquare = currentSquare;
+        }
+
+       // throw new UnsupportedOperationException("Not Implemented Yet.");
     }
 
     /**
