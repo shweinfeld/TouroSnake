@@ -12,5 +12,6 @@ Rachel Gutmann (https://github.com/rachel613g)
 Lillian Liebman (https://github.com/lliebman)
 Sara Orlian (https://github.com/SaraOrlian)
 Devora Nagel (https://github.com/dnagelCS)  
+Ricki Peikes (https://github.com/rpeikes) 
 
 ### TODO
