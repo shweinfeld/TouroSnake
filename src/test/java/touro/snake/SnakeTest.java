@@ -22,8 +22,6 @@ public class SnakeTest {
         Direction direction = Direction.North;
         SnakeHeadStateMachine state = new SnakeHeadStateMachine(direction);
         Snake snake = new Snake(state);
-        //FoodFactory foodFactory = mock(FoodFactory.class);
-        //Garden garden = new Garden(snake, foodFactory);
         List<Square> previousSquares = new ArrayList<>(snake.getSquares());
 
         //when
@@ -34,8 +32,8 @@ public class SnakeTest {
         assertEquals(previousSquares.get(0).getY() - 1, currentSquares.get(0).getY());
         for(int i = 1; i < currentSquares.size(); i++) {
             assertEquals(previousSquares.get(i - 1).getY(), currentSquares.get(i).getY());
+            assertEquals(previousSquares.get(i - 1).getX(), currentSquares.get(i).getX());
         }
-
     }
 
     @Test

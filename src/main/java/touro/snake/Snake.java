@@ -56,8 +56,10 @@ public class Snake {
      */
     public void move() {
         // Weinfeld
+
         //get direction
         Direction direction = snakeHeadStateMachine.getDirection();
+
         //save head position in variable previous square
         Square previousSquare = getHead();
         int x = previousSquare.getX();
@@ -81,8 +83,10 @@ public class Snake {
                 break;
         }
         squares.set(0, newSquare);
+
         //for the rest of the squares in snake:
         for (int i = 1; i < squares.size(); i ++) {
+
             //save current square position
             Square currentSquare = squares.get(i);
 
@@ -93,7 +97,6 @@ public class Snake {
             previousSquare = currentSquare;
         }
 
-       // throw new UnsupportedOperationException("Not Implemented Yet.");
     }
 
     /**
