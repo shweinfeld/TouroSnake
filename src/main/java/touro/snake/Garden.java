@@ -46,7 +46,24 @@ public class Garden {
      */
     boolean moveSnake() {
         // Gutmann
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        boolean isAlive = true;
+        snake.move();
+
+        //if snake eats the food
+        if(food.equals(snake.getHead()))
+        {
+            //turn food square into garden square
+
+            //add square to snake
+        }
+
+        //if collides with wall (or self) - ask Professor Schwimmer about colliding with self
+        if(snake.inBounds() == false || snake.eatsSelf())
+        {
+            isAlive = false;
+        }
+
+        return isAlive;
     }
 
     /**
