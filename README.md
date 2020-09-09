@@ -3,7 +3,6 @@ Implementation of the game Snake by Touro students in MCO364.
 
 ### Contributors
 
-<<<<<<< HEAD
 Professor Schwimmer (andrewoid)   
 Devora Nagel (https://github.com/dnagelCS)  
 Jennifer Komendant (https://github.com/jkomendant)  
