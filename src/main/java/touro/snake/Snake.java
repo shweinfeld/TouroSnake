@@ -63,26 +63,26 @@ public class Snake {
         int x = previousSquare.getX();
         int y = previousSquare.getY();
 
-        //move head one square in proper direction (assumes origin is on right corner)
+        //move head one square in proper direction (assumes origin is on the top left corner)
         Square newSquare = previousSquare;
         switch (direction) {
             case North:
-                newSquare = new Square(x, y + 1);
+                newSquare = new Square(x, y - 1);
                 break;
             case East:
-                newSquare = new Square(x - 1, y);
+                newSquare = new Square(x + 1, y);
                 squares.set(0, newSquare);
                 break;
             case South:
-                newSquare = new Square(x, y - 1);
+                newSquare = new Square(x, y + 1);
                 break;
             case West:
-                newSquare = new Square(x + 1, y);
+                newSquare = new Square(x - 1, y);
                 break;
         }
         squares.set(0, newSquare);
         //for the rest of the squares in snake:
-        for (int i = 1; i <= squares.size(); i ++) {
+        for (int i = 1; i < squares.size(); i ++) {
             //save current square position
             Square currentSquare = squares.get(i);
 
