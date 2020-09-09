@@ -80,7 +80,20 @@ public class Snake {
      */
     public boolean eatsSelf() {
         // Alter
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+
+        //get coordinates of head of snake
+        int headX = getHead().getX();
+        int headY = getHead().getY();
+
+        //snake eats itself if it hits its body 4th+
+        for (int i = 3; i < squares.size(); i++) {
+            Square snakeSquare = squares.get(i); //get 4th box
+            if(snakeSquare.getX() == headX && snakeSquare.getY() == headY ) {
+                return true;
+            }
+            else {
+                return false;
+    }
     }
 
 }
