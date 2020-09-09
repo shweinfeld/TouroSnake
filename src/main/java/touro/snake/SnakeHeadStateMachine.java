@@ -27,7 +27,30 @@ public class SnakeHeadStateMachine {
      */
     public void turnTo(Direction newDirection) {
         // Agishtein
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        boolean dirVert = this.checkOrientation(direction);
+        boolean newDirVert = this.checkOrientation(newDirection);
+
+        if(dirVert && newDirVert){
+            // If both are vertical do nothing
+            return;
+        }
+        if(!dirVert && !newDirVert){
+            // If both are horizontal do nothing
+            return;
+        }
+        else{
+            direction = newDirection;
+        }
+    }
+    public boolean checkOrientation(Direction dir){
+        boolean vertical = false;
+        if (dir == Direction.North || dir == Direction.South){
+            vertical = true;
+        }
+        if (dir == Direction.East || dir == Direction.West){
+            vertical = false;
+        }
+        return vertical;
     }
 
 }

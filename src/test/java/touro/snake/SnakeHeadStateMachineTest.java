@@ -8,62 +8,154 @@ public class SnakeHeadStateMachineTest {
 
     @Test
     public void turnTo_eastToSouth() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.East;
+        Direction newDirection = Direction.South;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.South, result);
     }
 
     @Test
     public void turnTo_eastToNorth() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.East;
+        Direction newDirection = Direction.North;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.North, result);
     }
 
     @Test
     public void turnTo_westToSouth() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.West;
+        Direction newDirection = Direction.South;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.South, result);
     }
 
     @Test
     public void turnTo_westToNorth() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.West;
+        Direction newDirection = Direction.North;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.North, result);
     }
 
     @Test
     public void turnTo_southToEast() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.South;
+        Direction newDirection = Direction.East;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.East, result);
     }
 
     @Test
     public void turnTo_southToWest() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.South;
+        Direction newDirection = Direction.West;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.West, result);
     }
 
     @Test
     public void turnTo_northToEast() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.North;
+        Direction newDirection = Direction.East;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.East, result);
     }
 
     @Test
     public void turnTo_northToWest() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.North;
+        Direction newDirection = Direction.West;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.West, result);
     }
 
     @Test
     public void turnTo_southToNorth() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.South;
+        Direction newDirection = Direction.North;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.South, result);
     }
 
     @Test
     public void turnTo_northToSouth() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.North;
+        Direction newDirection = Direction.South;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.North, result);
     }
 
     @Test
     public void turnTo_eastToWest() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.East;
+        Direction newDirection = Direction.West;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.East, result);
     }
 
     @Test
     public void turnTo_westToEast() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        Direction direction = Direction.West;
+        Direction newDirection = Direction.East;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        machine.turnTo(newDirection);
+        Direction result = machine.getDirection();
+        assertEquals(Direction.West, result);
     }
 
+    @Test
+    public void checkOrientation_vertical(){
+        Direction direction = Direction.North;
+        Direction newDirection = Direction.South;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        boolean isVertical = machine.checkOrientation(newDirection);
+        assertEquals(true,isVertical);
+    }
+    @Test
+    public void checkOrientation_horizontal(){
+        Direction direction = Direction.East;
+        Direction newDirection = Direction.West;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        boolean isVertical = machine.checkOrientation(newDirection);
+        assertEquals(false,isVertical);
+    }
+    @Test
+    public void checkOrientation_same_vertical(){
+        Direction direction = Direction.South;
+        Direction newDirection = Direction.South;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        boolean isVertical = machine.checkOrientation(newDirection);
+        assertEquals(true,isVertical);
+    }
+    @Test
+    public void checkOrientation_same_horizontal(){
+        Direction direction = Direction.East;
+        Direction newDirection = Direction.East;
+        SnakeHeadStateMachine machine = new SnakeHeadStateMachine(direction);
+        boolean isVertical = machine.checkOrientation(newDirection);
+        assertEquals(false,isVertical);
+    }
 }
