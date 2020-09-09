@@ -72,8 +72,8 @@ public class Snake {
      */
     public boolean inBounds() {
         // Aufrichtig
-        if(getHead().getX() <= 0 || getHead().getY() <= 0
-           || getHead().getX() >= Garden.WIDTH || getHead().getY() >= Garden.HEIGHT)
+        if(getHead().getX() <= 0 || getHead().getY() >= 0
+           || getHead().getX() >= Garden.WIDTH || getHead().getY() <= (-1 * Garden.HEIGHT))
         {
             return false;
         }
