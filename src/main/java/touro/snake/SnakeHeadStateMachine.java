@@ -26,7 +26,6 @@ public class SnakeHeadStateMachine {
      * @param newDirection
      */
     public void turnTo(Direction newDirection) {
-        // Agishtein
         boolean dirVert = this.checkOrientation(direction);
         boolean newDirVert = this.checkOrientation(newDirection);
 
