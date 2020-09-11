@@ -41,15 +41,12 @@ public class SnakeTest {
         SnakeHeadStateMachine headState = new SnakeHeadStateMachine(direction);
         Snake snake = new Snake(headState);
 
-        List<Square> squareList = new ArrayList<>(snake.getSquares());
+      //  List<Square> squareList = new ArrayList<>(snake.getSquares());
         Square middleSquare = new Square(50,20); //create a square on the snake with X and Y coordinates
         Square headSquare = new Square(50,20); //hardcoding coordinates because I'm not using the "move" method
-        squareList.add(middleSquare);
-        squareList.add(headSquare);
-
-        //set the 5th and head squares in snake list
-        squareList.set(4, middleSquare);
-        squareList.set(0, headSquare);
+        List<Square> list = snake.getSquares();
+        list.set(4,middleSquare);
+        list.set(0,headSquare);
 
         //WHEN
        boolean val = snake.eatsSelf();
