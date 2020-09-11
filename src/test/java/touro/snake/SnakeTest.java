@@ -41,7 +41,6 @@ public class SnakeTest {
         SnakeHeadStateMachine headState = new SnakeHeadStateMachine(direction);
         Snake snake = new Snake(headState);
 
-      //  List<Square> squareList = new ArrayList<>(snake.getSquares());
         Square middleSquare = new Square(50,20); //create a square on the snake with X and Y coordinates
         Square headSquare = new Square(50,20); //hardcoding coordinates because I'm not using the "move" method
         List<Square> list = snake.getSquares();
@@ -58,7 +57,18 @@ public class SnakeTest {
 
     @Test
     public void eatsSelf_false() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+
+        //IF
+        Direction direction = Direction.South;
+        SnakeHeadStateMachine headState = new SnakeHeadStateMachine(direction);
+        Snake snake = new Snake(headState);
+
+        //WHEN
+        boolean val = snake.eatsSelf();
+
+        //THEN
+        assertEquals(false, val);
+
     }
 
     @Test
