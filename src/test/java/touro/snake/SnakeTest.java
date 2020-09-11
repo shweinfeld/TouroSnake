@@ -40,21 +40,22 @@ public class SnakeTest {
         Direction direction = Direction.South;
         SnakeHeadStateMachine headState = new SnakeHeadStateMachine(direction);
         Snake snake = new Snake(headState);
+
         List<Square> squareList = new ArrayList<>(snake.getSquares());
-        Square middleSquare = new Square(4,5); //create a square on the snake with X and Y coordinates
-        Square headSquare = new Square(4,5); //hardcoding coordinates because I'm not using the "move" method
+        Square middleSquare = new Square(50,20); //create a square on the snake with X and Y coordinates
+        Square headSquare = new Square(50,20); //hardcoding coordinates because I'm not using the "move" method
         squareList.add(middleSquare);
         squareList.add(headSquare);
 
         //set the 5th and head squares in snake list
-        squareList.set(5, middleSquare);
+        squareList.set(4, middleSquare);
         squareList.set(0, headSquare);
 
         //WHEN
-       // snake.eatsSelf();
+       boolean val = snake.eatsSelf();
 
         //THEN
-        assertTrue(snake.eatsSelf());
+        assertEquals(true, val);
 
     }
 
