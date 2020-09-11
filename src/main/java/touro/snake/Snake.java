@@ -55,7 +55,6 @@ public class Snake {
      * Moves the Snake forward in whatever direction the head is facing.
      */
     public void move() {
-        // Weinfeld
 
         //get direction
         Direction direction = snakeHeadStateMachine.getDirection();
