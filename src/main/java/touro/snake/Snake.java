@@ -27,8 +27,8 @@ public class Snake {
     private void createSnake() {
         int x = Garden.WIDTH / 2;
         int y = Garden.HEIGHT / 2;
-        for (int i=0; i<START_LENGTH; i++) {
-            squares.add(new Square(x+i, y));
+        for (int i = 0; i < START_LENGTH; i++) {
+            squares.add(new Square(x + i, y));
         }
     }
 
@@ -80,20 +80,21 @@ public class Snake {
      */
     public boolean eatsSelf() {
         // Alter
+        boolean ateSelf = false;
 
         //get coordinates of head of snake
-        int headX = getHead().getX();
-        int headY = getHead().getY();
+        int headX = this.getHead().getX();
+        int headY = this.getHead().getY();
 
-        //snake eats itself if it hits its body 4th+
+        //snake eats itself if it hits its body at 4th square or beyond
+        //loop starts at 4th square and checks if head coordinates matches body coordinates
         for (int i = 3; i < squares.size(); i++) {
-            Square snakeSquare = squares.get(i); //get 4th box
-            if(snakeSquare.getX() == headX && snakeSquare.getY() == headY ) {
-                return true;
+            if ( squares.get(i).getX() == headX && squares.get(i).getY() == headY) {
+                ateSelf = true;
             }
-            else {
-                return false;
-    }
+
+        }
+        return ateSelf;
     }
 
 }
