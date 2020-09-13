@@ -6,6 +6,7 @@ import java.awt.*;
 public class GardenView extends JComponent {
 
     private final Garden garden;
+    private final int CELL_SIZE = 20;
 
     public GardenView(Garden garden) {
         this.garden = garden;
@@ -21,7 +22,8 @@ public class GardenView extends JComponent {
 
     void paintGrass(Graphics g) {
         // Berger
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        g.setColor(Color.GREEN);
+        g.fillRect(0, 0, getWidth(), getHeight());
     }
 
     void paintSnake(Graphics g) {
@@ -31,6 +33,13 @@ public class GardenView extends JComponent {
 
     void paintFood(Graphics g) {
         // Berger
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        if (garden.getFood() != null) {
+            Food food = garden.getFood();
+            g.setColor(Color.LIGHT_GRAY);
+
+            int x = food.getX() * CELL_SIZE;
+            int y = food.getY() * CELL_SIZE;
+            g.fillRect(x, y, CELL_SIZE, CELL_SIZE);
+        }
     }
 }
