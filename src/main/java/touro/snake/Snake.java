@@ -72,7 +72,6 @@ public class Snake {
                 break;
             case East:
                 newSquare = new Square(x + 1, y);
-                squares.set(0, newSquare);
                 break;
             case South:
                 newSquare = new Square(x, y + 1);
