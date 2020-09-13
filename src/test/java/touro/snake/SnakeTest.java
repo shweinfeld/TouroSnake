@@ -47,12 +47,9 @@ public class SnakeTest {
     public void inBounds_true()
     {
         //given
-        SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.East);
+        SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
-        FoodFactory foodFactory = new FoodFactory();
-        Garden garden = new Garden(snake, foodFactory);
-        GardenView gardenView = new GardenView(garden);
-        GardenThread thread = new GardenThread(garden, gardenView);
+        GardenThread thread = mock(GardenThread.class);
         //when
         thread.start();
         //then
@@ -62,12 +59,9 @@ public class SnakeTest {
     @Test
     public void inBounds_false() throws InterruptedException {
         //given
-        SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.East);
+        SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
-        FoodFactory foodFactory = new FoodFactory();
-        Garden garden = new Garden(snake, foodFactory);
-        GardenView gardenView = new GardenView(garden);
-        GardenThread thread = new GardenThread(garden, gardenView);
+        GardenThread thread = mock(GardenThread.class);
         //when
         thread.start();
         thread.sleep(1000);
