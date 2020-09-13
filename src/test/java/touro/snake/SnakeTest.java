@@ -64,7 +64,10 @@ public class SnakeTest {
         GardenThread thread = mock(GardenThread.class);
         //when
         thread.start();
-        thread.sleep(1000);
+        while(snake.inBounds())
+        {
+            snake.move();
+        }
         //then
         assertFalse(snake.inBounds());
     }
