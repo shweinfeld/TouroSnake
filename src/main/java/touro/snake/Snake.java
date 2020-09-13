@@ -71,13 +71,12 @@ public class Snake {
      * @return true if the Snake is within the bounds of the Garden, otherwise false.
      */
     public boolean inBounds() {
-        // Aufrichtig
-        if(getHead().getX() <= 0 || getHead().getY() <= 0
-           || getHead().getX() >= Garden.WIDTH || getHead().getY() >= Garden.HEIGHT)
+        if(getHead().getX() > 0 || getHead().getY() > 0
+           || getHead().getX() < Garden.WIDTH || getHead().getY() < Garden.HEIGHT)
         {
-            return false;
+            return true;
         }
-        else return true;
+        else return false;
     }
 
     /**

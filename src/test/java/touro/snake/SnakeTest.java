@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import static org.mockito.Mockito.*;
+
 public class SnakeTest {
 
     @Test
@@ -42,12 +44,34 @@ public class SnakeTest {
     }
 
     @Test
-    public void inBounds_true() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+    public void inBounds_true()
+    {
+        //given
+        SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.East);
+        Snake snake = new Snake(snakeHeadStateMachine);
+        FoodFactory foodFactory = new FoodFactory();
+        Garden garden = new Garden(snake, foodFactory);
+        GardenView gardenView = new GardenView(garden);
+        GardenThread thread = new GardenThread(garden, gardenView);
+        //when
+        thread.start();
+        //then
+        assertTrue(snake.inBounds());
     }
 
     @Test
-    public void inBounds_false() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+    public void inBounds_false() throws InterruptedException {
+        //given
+        SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.East);
+        Snake snake = new Snake(snakeHeadStateMachine);
+        FoodFactory foodFactory = new FoodFactory();
+        Garden garden = new Garden(snake, foodFactory);
+        GardenView gardenView = new GardenView(garden);
+        GardenThread thread = new GardenThread(garden, gardenView);
+        //when
+        thread.start();
+        thread.sleep(1000);
+        //then
+        assertFalse(snake.inBounds());
     }
 }
