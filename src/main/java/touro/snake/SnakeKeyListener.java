@@ -17,7 +17,6 @@ public class SnakeKeyListener extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
-        // Liebman
         switch(e.getKeyCode()) {
             case KeyEvent.VK_LEFT :
                 snake.turnTo(Direction.West);
