@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class GardenTest {
 
@@ -17,9 +18,9 @@ public class GardenTest {
     public void createFoodIfNecessary() {
         
         //if
-        SnakeHeadStateMachine state = new SnakeHeadStateMachine(Direction.North);
-        Snake snake = new Snake(state);
-        FoodFactory foodFactory = new FoodFactory();
+        //SnakeHeadStateMachine state = new SnakeHeadStateMachine(Direction.North);
+        Snake snake = mock(Snake.class);
+        FoodFactory foodFactory = mock(FoodFactory.class);
         Garden garden = new Garden(snake, foodFactory);
         List<Square> snakeBody = snake.getSquares();
         
