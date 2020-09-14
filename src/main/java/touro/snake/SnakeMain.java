@@ -7,7 +7,6 @@ public class SnakeMain {
     public static void main(String[] args) {
 
         // Set up all class dependencies here.
-        // Gottlieb
 
         SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.East);
         Snake snake = new Snake(snakeHeadStateMachine);
