@@ -16,8 +16,8 @@ public class FoodFactory {
     public Food newInstance() {
         // Peikes
         Random coordinateGenerator = new Random();
-        int randX = coordinateGenerator.nextInt(GARDEN_WIDTH)+1;
-        int randY = coordinateGenerator.nextInt(GARDEN_HEIGHT)+1;
+        int randX = coordinateGenerator.nextInt(GARDEN_WIDTH);
+        int randY = coordinateGenerator.nextInt(GARDEN_HEIGHT);
         return new Food(randX,randY);
     }
 
