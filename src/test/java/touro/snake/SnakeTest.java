@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class SnakeTest {
 
@@ -19,9 +19,9 @@ public class SnakeTest {
     public void move() {
 
         //if
-        Direction direction = Direction.North;
-        SnakeHeadStateMachine state = new SnakeHeadStateMachine(direction);
+        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(state);
+        when(state.getDirection()).thenReturn(Direction.North);
         List<Square> previousSquares = new ArrayList<>(snake.getSquares());
 
         //when
