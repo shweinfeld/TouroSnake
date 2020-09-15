@@ -63,7 +63,7 @@ public class Garden {
             //go through each square of snakeBody
             for (Square square : snakeBody) {
                 //if food is on snakeBody
-                if (food.getX()== square.getX() && food.getY() == square.getY()) {
+                while (food.getX()== square.getX() && food.getY() == square.getY()) {
                     //put it in a different place
                     food = foodFactory.newInstance();
                 }

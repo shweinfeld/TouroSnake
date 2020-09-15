@@ -18,10 +18,13 @@ public class GardenTest {
     public void createFoodIfNecessary() {
 
         //if
-        Snake snake = mock(Snake.class);
+        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
+        Snake snake = new Snake(state);
         FoodFactory foodFactory = mock(FoodFactory.class);
-        Food food = mock(Food.class);
         Garden garden = new Garden(snake, foodFactory);
+        int x = 0;
+        int y = 0;
+        Food food = new Food(x,y);
         List<Square> snakeBody = snake.getSquares();
 
         //when
