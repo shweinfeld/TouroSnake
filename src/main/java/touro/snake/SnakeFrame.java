@@ -6,15 +6,11 @@ import java.awt.event.KeyListener;
 
 public class SnakeFrame extends JFrame {
 
-    KeyListener listener;
-
     public SnakeFrame(
             GardenView gardenView,
             SnakeKeyListener snakeKeyListener
     ) throws HeadlessException {
         super();
-
-        listener = snakeKeyListener;
 
         setSize(1000,400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -22,6 +18,6 @@ public class SnakeFrame extends JFrame {
         setLayout(new BorderLayout());
 
         add(gardenView, BorderLayout.CENTER);
-        addKeyListener(listener);
+        addKeyListener(snakeKeyListener);
     }
 }
