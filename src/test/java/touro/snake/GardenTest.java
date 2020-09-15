@@ -1,7 +1,6 @@
 package touro.snake;
 
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.List;
 
