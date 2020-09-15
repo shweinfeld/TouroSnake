@@ -44,8 +44,7 @@ public class SnakeTest {
     }
 
     @Test
-    public void inBounds_true()
-    {
+    public void inBounds_true() {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
@@ -56,13 +55,13 @@ public class SnakeTest {
     }
 
     @Test
-    public void inBounds_false() throws InterruptedException {
+    public void inBounds_false() {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
         //when
-        while(snake.inBounds())
-        {
+        //number of iterations to be determined
+        for (int i = 0; i < 100; i++) {
             snake.move();
         }
         //then
