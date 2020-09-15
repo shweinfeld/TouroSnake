@@ -15,13 +15,14 @@ public class SnakeKeyListenerTest {
         Snake snake = mock(Snake.class);
         SnakeKeyListener snakeKeyListener = new SnakeKeyListener(snake);
         KeyEvent keyEvent = mock(KeyEvent.class);
+        when(keyEvent.getKeyCode()).thenReturn(KeyEvent.VK_LEFT);
 
         //when
-        when(keyEvent.getKeyCode()).thenReturn(KeyEvent.VK_LEFT);
         snakeKeyListener.keyPressed(keyEvent);
 
         //then
         verify(snake).turnTo(Direction.West);
+        verifyNoMoreInteractions(snake);
     }
 
     @Test
@@ -30,13 +31,14 @@ public class SnakeKeyListenerTest {
         Snake snake = mock(Snake.class);
         SnakeKeyListener snakeKeyListener = new SnakeKeyListener(snake);
         KeyEvent keyEvent = mock(KeyEvent.class);
+        when(keyEvent.getKeyCode()).thenReturn(KeyEvent.VK_RIGHT);
 
         //when
-        when(keyEvent.getKeyCode()).thenReturn(KeyEvent.VK_RIGHT);
         snakeKeyListener.keyPressed(keyEvent);
 
         //then
         verify(snake).turnTo(Direction.East);
+        verifyNoMoreInteractions(snake);
     }
 
     @Test
@@ -45,13 +47,14 @@ public class SnakeKeyListenerTest {
         Snake snake = mock(Snake.class);
         SnakeKeyListener snakeKeyListener = new SnakeKeyListener(snake);
         KeyEvent keyEvent = mock(KeyEvent.class);
+        when(keyEvent.getKeyCode()).thenReturn(KeyEvent.VK_UP);
 
         //when
-        when(keyEvent.getKeyCode()).thenReturn(KeyEvent.VK_UP);
         snakeKeyListener.keyPressed(keyEvent);
 
         //then
         verify(snake).turnTo(Direction.North);
+        verifyNoMoreInteractions(snake);
     }
 
     @Test
@@ -60,13 +63,14 @@ public class SnakeKeyListenerTest {
         Snake snake = mock(Snake.class);
         SnakeKeyListener snakeKeyListener = new SnakeKeyListener(snake);
         KeyEvent keyEvent = mock(KeyEvent.class);
+        when(keyEvent.getKeyCode()).thenReturn(KeyEvent.VK_DOWN);
 
         //when
-        when(keyEvent.getKeyCode()).thenReturn(KeyEvent.VK_DOWN);
         snakeKeyListener.keyPressed(keyEvent);
 
         //then
         verify(snake).turnTo(Direction.South);
+        verifyNoMoreInteractions(snake);
     }
 
     @Test
