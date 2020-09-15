@@ -2,13 +2,35 @@ package touro.snake;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class SnakeTest {
 
     @Test
     public void grow() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+
+        //if
+        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
+        Snake snake = new Snake(state);
+        when(state.getDirection()).thenReturn(Direction.North); //The direction of the head is irrelevant
+        List<Square> Squares = snake.getSquares();
+
+        //when
+        snake.grow();
+
+        //then
+        assertEquals(7, Squares.size());
+
+        // The snake is created facing east, so the last square should
+        // have the same Y as the old last square but 1 more than the X
+        assertEquals(Squares.get(Squares.size() - 1).getY(), Squares.get(Squares.size() - 2).getY());
+        assertEquals(Squares.get(Squares.size() - 1).getX(), Squares.get(Squares.size() - 2).getX() + 1);
+
     }
 
     @Test
