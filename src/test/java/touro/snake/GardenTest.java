@@ -19,9 +19,8 @@ public class GardenTest {
     public void createFoodIfNecessary() {
 
         //if
-        SnakeHeadStateMachine state = new SnakeHeadStateMachine(Direction.North);
-        Snake snake = new Snake(state);
-        FoodFactory foodFactory = new FoodFactory();
+        Snake snake = mock(Snake.class);
+        FoodFactory foodFactory = mock(FoodFactory.class);
         Garden garden = new Garden(snake, foodFactory);
         List<Square> snakeBody = snake.getSquares();
 
