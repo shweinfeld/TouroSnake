@@ -3,10 +3,12 @@ package touro.snake;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Scanner;
 
 public class SnakeFrame extends JFrame {
 
-    KeyEvent e;
+    KeyListener listener;
 
     public SnakeFrame(
             GardenView gardenView,
@@ -14,13 +16,14 @@ public class SnakeFrame extends JFrame {
     ) throws HeadlessException {
         super();
 
-        setSize(800,600);
+        listener = snakeKeyListener;
+
+        setSize(100,40);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Snake");
         setLayout(new BorderLayout());
 
         add(gardenView, BorderLayout.CENTER);
-        snakeKeyListener.keyPressed(e);
-
+        addKeyListener(listener);
     }
 }
