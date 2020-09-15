@@ -2,7 +2,6 @@ package touro.snake;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
 
 public class SnakeFrame extends JFrame {
 
