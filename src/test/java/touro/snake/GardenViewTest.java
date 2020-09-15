@@ -12,13 +12,7 @@ public class GardenViewTest {
     @Test
     public void paintGrass() {
         //given
-        Direction direction = Direction.North;
-        SnakeHeadStateMachine shm = new SnakeHeadStateMachine(direction);
-        Snake snake = new Snake(shm);
-        FoodFactory ff = new FoodFactory();
-        Garden garden = new Garden(snake, ff);
-        GardenView view = new GardenView(garden);
-
+        GardenView view = mock(GardenView.class);
         int width = view.getWidth();
         int height = view.getHeight();
 
@@ -39,14 +33,10 @@ public class GardenViewTest {
     @Test
     public void paintFood() {
         //given
-        Direction direction = Direction.North;
-        SnakeHeadStateMachine shm = new SnakeHeadStateMachine(direction);
-        Snake snake = new Snake(shm);
-        FoodFactory ff = new FoodFactory();
-        Garden garden = new Garden(snake, ff);
-        GardenView view = new GardenView(garden);
+        GardenView view = mock(GardenView.class);
         int CELL_SIZE = 20;
 
+        FoodFactory ff = new FoodFactory();
         Food food = ff.newInstance();
         int x = food.getX() * CELL_SIZE;
         int y = food.getY() * CELL_SIZE;
@@ -63,13 +53,7 @@ public class GardenViewTest {
     @Test
     public void paintFood_nullFood() {
         //given
-        Direction direction = Direction.North;
-        SnakeHeadStateMachine shm = new SnakeHeadStateMachine(direction);
-        Snake snake = new Snake(shm);
-        FoodFactory ff = new FoodFactory();
-        Garden garden = new Garden(snake, ff);
-        GardenView view = new GardenView(garden);
-
+        GardenView view = mock(GardenView.class);
         Graphics g = mock(Graphics.class);
 
         //when
