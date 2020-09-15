@@ -49,9 +49,8 @@ public class SnakeTest {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
-        GardenThread thread = mock(GardenThread.class);
         //when
-        thread.start();
+        snake.move();
         //then
         assertTrue(snake.inBounds());
     }
@@ -61,9 +60,7 @@ public class SnakeTest {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
-        GardenThread thread = mock(GardenThread.class);
         //when
-        thread.start();
         while(snake.inBounds())
         {
             snake.move();
