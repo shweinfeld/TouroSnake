@@ -7,7 +7,7 @@ public class GardenView extends JComponent {
 
     private final Garden garden;
     private Snake snake;
-    private final int CELL_SIZE = 20;
+    private final int CELL_SIZE = 10;
 
     public GardenView(Garden garden) {
         this.garden = garden;
@@ -27,10 +27,9 @@ public class GardenView extends JComponent {
     }
 
     void paintSnake(Graphics g) {
-        // Orlian
         for (Square s : snake.getSquares()) {
             g.setColor(Color.RED);
-            g.fillRect(s.getX(), s.getY(), CELL_SIZE, CELL_SIZE);
+            g.fillRect(s.getX()*CELL_SIZE, s.getY()*CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
     }
 
