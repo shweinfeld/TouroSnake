@@ -16,7 +16,7 @@ public class SnakeFrame extends JFrame {
 
         listener = snakeKeyListener;
 
-        setSize(100,40);
+        setSize(1000,400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Snake");
         setLayout(new BorderLayout());
