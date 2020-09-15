@@ -1,6 +1,7 @@
 package touro.snake;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.List;
 
@@ -16,17 +17,17 @@ public class GardenTest {
 
     @Test
     public void createFoodIfNecessary() {
-        
+
         //if
-        //SnakeHeadStateMachine state = new SnakeHeadStateMachine(Direction.North);
-        Snake snake = mock(Snake.class);
-        FoodFactory foodFactory = mock(FoodFactory.class);
+        SnakeHeadStateMachine state = new SnakeHeadStateMachine(Direction.North);
+        Snake snake = new Snake(state);
+        FoodFactory foodFactory = new FoodFactory();
         Garden garden = new Garden(snake, foodFactory);
         List<Square> snakeBody = snake.getSquares();
-        
+
         //when
         garden.createFoodIfNecessary();
-        
+
         //then
         int x = foodFactory.newInstance().getX();
         int y = foodFactory.newInstance().getY();
