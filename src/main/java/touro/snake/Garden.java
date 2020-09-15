@@ -59,9 +59,8 @@ public class Garden {
         if (snake.contains(food) == true) {
             List<Square> snakeBody = snake.getSquares();
 
-            for (Square square: snakeBody) {
-
-                if (snakeBody.contains(square)) {
+            for (int i = 0; i < snakeBody.size(); i++) {
+                if (food.equals(i)) {
                     ;
                 } else {
                     foodFactory.newInstance();

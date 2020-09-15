@@ -20,6 +20,7 @@ public class GardenTest {
         //if
         Snake snake = mock(Snake.class);
         FoodFactory foodFactory = mock(FoodFactory.class);
+        Food food = mock(Food.class);
         Garden garden = new Garden(snake, foodFactory);
         List<Square> snakeBody = snake.getSquares();
 
@@ -27,8 +28,12 @@ public class GardenTest {
         garden.createFoodIfNecessary();
 
         //then
-        for (Square square: snakeBody) {
-            assertNotEquals(square, snakeBody);
+        for (int i = 0; i < snakeBody.size(); i++) {
+            if (food.equals(i)) {
+                ;
+            } else {
+                foodFactory.newInstance();
+            }
         }
     }
 }
