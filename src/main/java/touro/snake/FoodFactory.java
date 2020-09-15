@@ -10,14 +10,12 @@ public class FoodFactory {
     /**
      * @return a new Food with random coordinates in the Garden
      */
-    private final int GARDEN_WIDTH = 100;
-    private final int GARDEN_HEIGHT = 40;
+
+    private final Random rand = new Random();
 
     public Food newInstance() {
-        // Peikes
-        Random coordinateGenerator = new Random();
-        int randX = coordinateGenerator.nextInt(GARDEN_WIDTH);
-        int randY = coordinateGenerator.nextInt(GARDEN_HEIGHT);
+        int randX = rand.nextInt(Garden.WIDTH);
+        int randY = rand.nextInt(Garden.HEIGHT);
         return new Food(randX,randY);
     }
 
