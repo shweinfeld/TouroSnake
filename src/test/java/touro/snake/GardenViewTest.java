@@ -12,7 +12,8 @@ public class GardenViewTest {
     @Test
     public void paintGrass() {
         //given
-        GardenView view = mock(GardenView.class);
+        Garden garden = mock(Garden.class);
+        GardenView view = new GardenView(garden);
         int width = view.getWidth();
         int height = view.getHeight();
 
@@ -33,7 +34,8 @@ public class GardenViewTest {
     @Test
     public void paintFood() {
         //given
-        GardenView view = mock(GardenView.class);
+        Garden garden = mock(Garden.class);
+        GardenView view = new GardenView(garden);
         int CELL_SIZE = 20;
 
         FoodFactory ff = new FoodFactory();
@@ -53,7 +55,8 @@ public class GardenViewTest {
     @Test
     public void paintFood_nullFood() {
         //given
-        GardenView view = mock(GardenView.class);
+        Garden garden = mock(Garden.class);
+        GardenView view = new GardenView(garden);
         Graphics g = mock(Graphics.class);
 
         //when
