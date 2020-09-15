@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
 public class GardenTest {
@@ -18,14 +19,15 @@ public class GardenTest {
     public void createFoodIfNecessary() {
 
         //if
-        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
-        Snake snake = new Snake(state);
+        Snake snake = mock(Snake.class);
         FoodFactory foodFactory = mock(FoodFactory.class);
+        Food food = mock(Food.class);
+        doReturn(food.getX()).when(food).getX();
+        doReturn(food.getY()).when(food).getY();
         Garden garden = new Garden(snake, foodFactory);
-        int x = 0;
-        int y = 0;
-        Food food = new Food(x,y);
+
         List<Square> snakeBody = snake.getSquares();
+        doReturn(snake.getSquares()).when(snake).getSquares();
 
         //when
         garden.createFoodIfNecessary();
