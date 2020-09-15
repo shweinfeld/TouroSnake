@@ -23,17 +23,32 @@ public class SnakeTest {
         Snake snake = new Snake(state);
         when(state.getDirection()).thenReturn(Direction.North);
         List<Square> previousSquares = new ArrayList<>(snake.getSquares());
+        int prevSize = previousSquares.size();
+        int prevLastIndex = previousSquares.size() - 1;
 
         //when
         snake.move();
 
         //then
         List<Square> currentSquares = snake.getSquares();
-        assertEquals(previousSquares.get(0).getY() - 1, currentSquares.get(0).getY());
-        for(int i = 1; i < currentSquares.size(); i++) {
-            assertEquals(previousSquares.get(i - 1).getY(), currentSquares.get(i).getY());
-            assertEquals(previousSquares.get(i - 1).getX(), currentSquares.get(i).getX());
+        int currSize = currentSquares.size();
+        int currLastIndex = currentSquares.size() - 1;
+        int firstIndex = 0;
+
+        //assert that the snake has not changed its size
+        assertEquals(prevSize, currSize);
+
+        //assert that new head has been created in the proper position
+        assertEquals(previousSquares.get(firstIndex).getY() - 1, currentSquares.get(firstIndex).getY());
+
+        //assert that the last square has been removed
+        assertEquals(previousSquares.get(prevLastIndex).getX() - 1, currentSquares.get(currLastIndex).getX());
+
+        //assert that the rest of the squares have remained in place
+        for (int i = 0; i < currLastIndex; i++) {
+            assertEquals(previousSquares.get(i), currentSquares.get(i + 1));
         }
+
     }
 
     @Test

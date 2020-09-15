@@ -60,12 +60,12 @@ public class Snake {
         Direction direction = snakeHeadStateMachine.getDirection();
 
         //save head position in variable previous square
-        Square previousSquare = getHead();
-        int x = previousSquare.getX();
-        int y = previousSquare.getY();
+        Square previousHead = getHead();
+        int x = previousHead.getX();
+        int y = previousHead.getY();
 
         //move head one square in proper direction (assumes origin is on the top left corner)
-        Square newSquare = previousSquare;
+        Square newSquare;
         switch (direction) {
             case North:
                 newSquare = new Square(x, y - 1);
@@ -79,21 +79,12 @@ public class Snake {
             case West:
                 newSquare = new Square(x - 1, y);
                 break;
+            default:
+                System.out.println("ERROR: Direction is not valid or is null");
+                return;
         }
-        squares.set(0, newSquare);
-
-        //for the rest of the squares in snake:
-        for (int i = 1; i < squares.size(); i ++) {
-
-            //save current square position
-            Square currentSquare = squares.get(i);
-
-            //move square into previous square
-            squares.set(i, previousSquare);
-
-            //previous square = current square
-            previousSquare = currentSquare;
-        }
+        squares.add(0, newSquare);
+        squares.remove(squares.size() - 1);
 
     }
 
