@@ -1,5 +1,6 @@
 package touro.snake;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -58,14 +59,14 @@ public class Garden {
 
         if (snake.contains(food) == true) {
             List<Square> snakeBody = snake.getSquares();
-            int x = 0;
-            int y = 0;
-            Square square = new Square(x,y);
 
-            if (square.equals(snakeBody)) {
-                ;
-            } else {
-                foodFactory.newInstance();
+            for (Square square: snakeBody) {
+
+                if (snakeBody.contains(square)) {
+                    ;
+                } else {
+                    foodFactory.newInstance();
+                }
             }
         }
     }

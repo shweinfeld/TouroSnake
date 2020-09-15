@@ -28,11 +28,8 @@ public class GardenTest {
         garden.createFoodIfNecessary();
 
         //then
-        int x = foodFactory.newInstance().getX();
-        int y = foodFactory.newInstance().getY();
-
-        Square square = new Square(x, y);
-
-        assertNotEquals(snakeBody, square);
+        for (Square square: snakeBody) {
+            assertNotEquals(square, snakeBody);
+        }
     }
 }
