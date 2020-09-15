@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
 public class GardenTest {
@@ -29,9 +30,10 @@ public class GardenTest {
         //then
         for (Square square : snakeBody) {
             if (food.getX()== square.getX() && food.getY() == square.getY()) {
-                ;
+                assertEquals(food.getX(), square.getX());
+                assertEquals(food.getY(), square.getY());
             } else {
-                foodFactory.newInstance();
+                assertTrue(food.getX() != square.getX() || food.getY() != square.getY());
             }
         }
     }
