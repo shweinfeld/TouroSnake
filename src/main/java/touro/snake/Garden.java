@@ -13,9 +13,10 @@ public class Garden {
     private final FoodFactory foodFactory;
     private Food food;
 
-    public Garden(Snake snake, FoodFactory foodFactory) {
+    public Garden(Snake snake, FoodFactory foodFactory, Food food) {
         this.snake = snake;
         this.foodFactory = foodFactory;
+        this.food = food;
     }
 
     public Snake getSnake() {
@@ -49,21 +50,18 @@ public class Garden {
         boolean isAlive = true;
         snake.move();
 
-        //if snake eats the food
-        if(food.equals(snake.getHead()))
-        {
-            //add square to snake
-            snake.grow();
-
-            //possibly turn food square into garden square?
-        }
-
-        //if collides with wall (or self) - ask Professor Schwimmer about colliding with self
+        //if collides with wall or self
         if(snake.inBounds() == false || snake.eatsSelf())
         {
             isAlive = false;
         }
 
+        //if snake eats the food
+        if(food.equals(snake.getHead()))
+        {
+            //add square to snake
+            snake.grow();
+        }
         return isAlive;
     }
 
