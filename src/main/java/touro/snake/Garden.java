@@ -55,14 +55,16 @@ public class Garden {
      * Creates a Food if there isn't one, making sure it's not already on a Square occupied by the Snake.
      */
     void createFoodIfNecessary() {
-
+        //if snake ate food, create new one
         if (snake.contains(food) == true) {
-            List<Square> snakeBody = snake.getSquares();
+            foodFactory.newInstance();
 
+            List<Square> snakeBody = snake.getSquares();
+            //go through each square of snakeBody
             for (Square square : snakeBody) {
+                //if food is on snakeBody
                 if (food.getX()== square.getX() && food.getY() == square.getY()) {
-                    ;
-                } else {
+                    //put it in a different place
                     foodFactory.newInstance();
                 }
             }

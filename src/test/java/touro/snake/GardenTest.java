@@ -29,12 +29,7 @@ public class GardenTest {
 
         //then
         for (Square square : snakeBody) {
-            if (food.getX()== square.getX() && food.getY() == square.getY()) {
-                assertEquals(food.getX(), square.getX());
-                assertEquals(food.getY(), square.getY());
-            } else {
-                assertTrue(food.getX() != square.getX() || food.getY() != square.getY());
-            }
+            assertTrue(food.getX() != square.getX() || food.getY() != square.getY());
         }
     }
 }
