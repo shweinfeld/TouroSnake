@@ -13,10 +13,10 @@ public class Garden {
     private final FoodFactory foodFactory;
     private Food food;
 
-    public Garden(Snake snake, FoodFactory foodFactory, Food food) {
+    public Garden(Snake snake, FoodFactory foodFactory) {
         this.snake = snake;
         this.foodFactory = foodFactory;
-        this.food = food;
+        createFoodIfNecessary();
     }
 
     public Snake getSnake() {
@@ -51,14 +51,12 @@ public class Garden {
         snake.move();
 
         //if collides with wall or self
-        if(snake.inBounds() == false || snake.eatsSelf())
-        {
+        if (snake.inBounds() == false || snake.eatsSelf()) {
             isAlive = false;
         }
 
         //if snake eats the food
-        if(food.equals(snake.getHead()))
-        {
+        if (food.getX() == snake.getHead().getX() && food.getY() == snake.getHead().getY()) {
             //add square to snake
             snake.grow();
         }
