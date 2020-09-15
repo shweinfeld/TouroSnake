@@ -6,7 +6,7 @@ import java.awt.*;
 public class GardenView extends JComponent {
 
     private final Garden garden;
-    private final int CELL_SIZE = 20;
+    private final int CELL_SIZE = 10;
 
     public GardenView(Garden garden) {
         this.garden = garden;
