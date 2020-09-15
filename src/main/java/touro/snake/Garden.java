@@ -46,7 +46,6 @@ public class Garden {
      * @return true if the Snake is still alive, otherwise false.
      */
     boolean moveSnake() {
-        // Gutmann
         boolean isAlive = true;
         snake.move();
 
