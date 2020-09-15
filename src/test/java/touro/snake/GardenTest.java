@@ -28,8 +28,8 @@ public class GardenTest {
         garden.createFoodIfNecessary();
 
         //then
-        for (int i = 0; i < snakeBody.size(); i++) {
-            if (food.equals(i)) {
+        for (Square square : snakeBody) {
+            if (food.getX()== square.getX() && food.getY() == square.getY()) {
                 ;
             } else {
                 foodFactory.newInstance();
