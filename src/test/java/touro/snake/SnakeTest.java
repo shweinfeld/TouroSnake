@@ -46,7 +46,9 @@ public class SnakeTest {
 
         //assert that the rest of the squares have remained in place
         for (int i = 0; i < currLastIndex; i++) {
-            assertEquals(previousSquares.get(i), currentSquares.get(i + 1));
+            Square prevSquare = previousSquares.get(i);
+            Square currSquare = currentSquares.get(i + 1);
+            assertEquals(prevSquare,  currSquare);
         }
 
     }
