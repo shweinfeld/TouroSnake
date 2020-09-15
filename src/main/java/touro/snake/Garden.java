@@ -52,9 +52,10 @@ public class Garden {
         //if snake eats the food
         if(food.equals(snake.getHead()))
         {
-            //turn food square into garden square
-
             //add square to snake
+            snake.grow();
+
+            //possibly turn food square into garden square?
         }
 
         //if collides with wall (or self) - ask Professor Schwimmer about colliding with self
