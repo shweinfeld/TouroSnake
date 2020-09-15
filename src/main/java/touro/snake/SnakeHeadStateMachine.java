@@ -29,12 +29,7 @@ public class SnakeHeadStateMachine {
         boolean dirVert = this.checkOrientation(direction);
         boolean newDirVert = this.checkOrientation(newDirection);
 
-        if(dirVert && newDirVert){
-            // If both are vertical do nothing
-            return;
-        }
-        if(!dirVert && !newDirVert){
-            // If both are horizontal do nothing
+        if((dirVert && newDirVert)||(!dirVert && !newDirVert)){
             return;
         }
         else{
@@ -42,14 +37,10 @@ public class SnakeHeadStateMachine {
         }
     }
     public boolean checkOrientation(Direction dir){
-        boolean vertical = false;
-        if (dir == Direction.North || dir == Direction.South){
-            vertical = true;
+        if (dir == North || dir == South){
+            return true;
         }
-        if (dir == Direction.East || dir == Direction.West){
-            vertical = false;
-        }
-        return vertical;
+        return false;
     }
 
 }
