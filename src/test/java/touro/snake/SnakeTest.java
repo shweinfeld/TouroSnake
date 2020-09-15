@@ -2,10 +2,12 @@ package touro.snake;
 
 import org.junit.Test;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class SnakeTest {
 
@@ -37,9 +39,12 @@ public class SnakeTest {
     @Test
     public void eatsSelf_true() {
         //IF
-        Direction direction = Direction.South;
+    /*    Direction direction = Direction.South;
         SnakeHeadStateMachine headState = new SnakeHeadStateMachine(direction);
-        Snake snake = new Snake(headState);
+        Snake snake = new Snake(headState);*/
+
+        SnakeHeadStateMachine headStateMock = mock(SnakeHeadStateMachine.class);
+        Snake snake = new Snake(headStateMock);
 
         Square middleSquare = new Square(50,20); //create a square on the snake with X and Y coordinates
         Square headSquare = new Square(50,20); //hardcoding coordinates because I'm not using the "move" method
@@ -59,9 +64,8 @@ public class SnakeTest {
     public void eatsSelf_false() {
 
         //IF
-        Direction direction = Direction.South;
-        SnakeHeadStateMachine headState = new SnakeHeadStateMachine(direction);
-        Snake snake = new Snake(headState);
+        SnakeHeadStateMachine headStateMock = mock(SnakeHeadStateMachine.class);
+        Snake snake = mock(Snake.class);
 
         //WHEN
         boolean val = snake.eatsSelf();
