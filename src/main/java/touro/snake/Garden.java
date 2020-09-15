@@ -57,7 +57,7 @@ public class Garden {
     void createFoodIfNecessary() {
         //if snake ate food, create new one
         if (snake.contains(food) == true) {
-            foodFactory.newInstance();
+            food = foodFactory.newInstance();
 
             List<Square> snakeBody = snake.getSquares();
             //go through each square of snakeBody
@@ -65,7 +65,7 @@ public class Garden {
                 //if food is on snakeBody
                 if (food.getX()== square.getX() && food.getY() == square.getY()) {
                     //put it in a different place
-                    foodFactory.newInstance();
+                    food = foodFactory.newInstance();
                 }
             }
         }
