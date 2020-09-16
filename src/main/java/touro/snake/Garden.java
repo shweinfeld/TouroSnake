@@ -40,13 +40,26 @@ public class Garden {
     }
 
     /**
-     * Moves the Snake, eats the Food or collides with the wall (edges of the Garden).
+     * Moves the Snake, eats the Food or collides with the wall (edges of the Garden), or eats self.
      *
      * @return true if the Snake is still alive, otherwise false.
      */
     boolean moveSnake() {
-        // Gutmann
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        snake.move();
+
+        //if collides with wall or self
+        if (!snake.inBounds() || snake.eatsSelf()) {
+            return false;
+        }
+
+        //if snake eats the food
+        if (snake.getHead().equals(food)) {
+            //add square to snake
+            snake.grow();
+            //remove food
+            food = null;
+        }
+        return true;
     }
 
     /**
