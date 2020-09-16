@@ -36,12 +36,14 @@ public class GardenViewTest {
         //given
         Garden garden = mock(Garden.class);
         GardenView view = new GardenView(garden);
-        int CELL_SIZE = 20;
 
-        FoodFactory ff = new FoodFactory();
-        Food food = ff.newInstance();
-        int x = food.getX() * CELL_SIZE;
-        int y = food.getY() * CELL_SIZE;
+        when(garden.getFood()).thenReturn(mock(Food.class));
+
+        Food food = garden.getFood();
+        when(food.getX()).thenReturn(5);
+        when(food.getY()).thenReturn(10);
+        int x = food.getX() * GardenView.CELL_SIZE;
+        int y = food.getY() * GardenView.CELL_SIZE;
 
         Graphics g = mock(Graphics.class);
 
@@ -49,7 +51,7 @@ public class GardenViewTest {
         view.paintFood(g);
 
         //then
-        verify(g).fillRect(x,y, CELL_SIZE, CELL_SIZE);
+        verify(g).fillRect(x,y, GardenView.CELL_SIZE, GardenView.CELL_SIZE);
     }
 
     @Test
