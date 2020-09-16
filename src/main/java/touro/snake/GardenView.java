@@ -6,6 +6,7 @@ import java.awt.*;
 public class GardenView extends JComponent {
 
     private final Garden garden;
+    public static final int CELL_SIZE = 10;
 
     public GardenView(Garden garden) {
         this.garden = garden;
@@ -25,8 +26,10 @@ public class GardenView extends JComponent {
     }
 
     void paintSnake(Graphics g) {
-        // Orlian
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        g.setColor(Color.RED);
+        for (Square s : garden.getSnake().getSquares()) {
+            g.fillRect(s.getX()*CELL_SIZE, s.getY()*CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        }
     }
 
     void paintFood(Graphics g) {
