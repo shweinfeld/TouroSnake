@@ -2,9 +2,6 @@ package touro.snake;
 
 import org.junit.Test;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class GardenTest {
@@ -18,17 +15,14 @@ public class GardenTest {
     public void createFoodIfNecessary() {
 
         //given
-        Food food = mock(Food.class);
-        FoodFactory foodFactory = mock(FoodFactory.class);
         Snake snake = mock(Snake.class);
-        doReturn(snake.contains(food)).when(snake).contains(food);
+        FoodFactory foodFactory = mock(FoodFactory.class);
         Garden garden = new Garden(snake, foodFactory);
 
         //when
         garden.createFoodIfNecessary();
 
         //then
-        assertNotNull(food);
-        assertFalse(snake.contains(food));
+        verify(foodFactory).newInstance();
     }
 }
