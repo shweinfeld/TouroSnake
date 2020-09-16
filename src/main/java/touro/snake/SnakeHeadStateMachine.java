@@ -7,7 +7,7 @@ import static touro.snake.Direction.West;
  * State machine that controls the turning the direction of the Snake head.
  * https://en.wikipedia.org/wiki/State_pattern
  */
-public class SnakeHeadStateMachine {
+public class  SnakeHeadStateMachine {
 
     private Direction direction;
 
