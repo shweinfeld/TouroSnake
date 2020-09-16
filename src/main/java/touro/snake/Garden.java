@@ -40,25 +40,26 @@ public class Garden {
     }
 
     /**
-     * Moves the Snake, eats the Food or collides with the wall (edges of the Garden).
+     * Moves the Snake, eats the Food or collides with the wall (edges of the Garden), or eats self.
      *
      * @return true if the Snake is still alive, otherwise false.
      */
     boolean moveSnake() {
-        boolean isAlive = true;
         snake.move();
 
         //if collides with wall or self
-        if (snake.inBounds() == false || snake.eatsSelf()) {
-            isAlive = false;
+        if (!snake.inBounds() || snake.eatsSelf()) {
+            return false;
         }
 
         //if snake eats the food
-        if (food.equals(snake.getHead())) {
+        if (snake.getHead().equals(food)) {
             //add square to snake
             snake.grow();
+            //remove food
+            food = null;
         }
-        return isAlive;
+        return true;
     }
 
     /**
