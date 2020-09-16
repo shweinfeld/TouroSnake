@@ -1,14 +1,16 @@
 package touro.snake;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.swing.JComponent.setDefaultLocale;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
+import static touro.snake.GardenView.CELL_SIZE;
 
 public class GardenViewTest {
 
@@ -20,24 +22,27 @@ public class GardenViewTest {
     @Test
     public void paintSnake() {
         //given
-        FoodFactory foodFactory = mock(FoodFactory.class);
         Snake snake = mock(Snake.class);
-        Garden garden = new Garden(snake, foodFactory);
+        Garden garden = mock(Garden.class);
         GardenView view = new GardenView(garden);
         Graphics g = mock(Graphics.class);
-        int cellSize = 10;
+
+        List<Square> squares = List.of(
+                new Square(50, 20),
+                new Square(51, 21),
+                new Square(52, 22)
+        );
+
+        when(garden.getSnake()).thenReturn(snake); //getting the snake from the garden
+        when(snake.getSquares()).thenReturn(squares); //getting the list of squares created above
 
         //when
         view.paintSnake(g);
 
-        //then
-        verify(g).fillRect(snake.getSquares().get(0).getX()*cellSize, snake.getSquares().get(0).getY()*cellSize, cellSize, cellSize);
-        verify(g).fillRect(snake.getSquares().get(1).getX()*cellSize, snake.getSquares().get(1).getY()*cellSize, cellSize, cellSize);
-        verify(g).fillRect(snake.getSquares().get(2).getX()*cellSize, snake.getSquares().get(2).getY()*cellSize, cellSize, cellSize);
-        verify(g).fillRect(snake.getSquares().get(3).getX()*cellSize, snake.getSquares().get(3).getY()*cellSize, cellSize, cellSize);
-        verify(g).fillRect(snake.getSquares().get(4).getX()*cellSize, snake.getSquares().get(4).getY()*cellSize, cellSize, cellSize);
-        verify(g).fillRect(snake.getSquares().get(5).getX()*cellSize, snake.getSquares().get(5).getY()*cellSize, cellSize, cellSize);
-
+        //then  --checking that the cells (for which the coordinates are found in the list created above) are filled
+        verify(g).fillRect(50 * CELL_SIZE, 20 * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        verify(g).fillRect(51 * CELL_SIZE, 21 * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        verify(g).fillRect(52 * CELL_SIZE, 22 * CELL_SIZE, CELL_SIZE, CELL_SIZE);
     }
 
 
