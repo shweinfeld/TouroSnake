@@ -86,10 +86,10 @@ public class Snake {
                 return;
         }
         squares.add(0, newSquare);
-        if (!grow) {
+        if (!getGrow()) {
             squares.remove(squares.size() - 1);
         } else {
-            grow = false;
+            setGrow(false);
         }
 
 
@@ -119,4 +119,11 @@ public class Snake {
         throw new UnsupportedOperationException("Not Implemented Yet.");
     }
 
+    public boolean getGrow() {
+        return grow;
+    }
+
+    public void setGrow(boolean grow) {
+        this.grow = grow;
+    }
 }
