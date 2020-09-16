@@ -84,8 +84,8 @@ public class Snake {
         //snake eats itself if it hits its body at 4th square or beyond
         //loop starts at 4th square and checks if head coordinates matches body coordinates
         for (int i = 3; i < squares.size(); i++) {
-            Square square = squares.get(i);
-            if (square.equals(head)) {
+            Square bodySquare = squares.get(i);
+            if (bodySquare.equals(head)) {
                 return true;
             }
 
