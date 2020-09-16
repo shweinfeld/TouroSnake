@@ -16,6 +16,8 @@ public class Snake {
 
     private final SnakeHeadStateMachine snakeHeadStateMachine;
 
+    private boolean grow = false;
+
     public Snake(SnakeHeadStateMachine snakeHeadStateMachine) {
         this.snakeHeadStateMachine = snakeHeadStateMachine;
         createSnake();
@@ -40,7 +42,7 @@ public class Snake {
      * Grows the Snake one square.
      */
     public void grow() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        setGrow(true);
     }
 
     public void turnTo(Direction newDirection) {
@@ -55,8 +57,42 @@ public class Snake {
      * Moves the Snake forward in whatever direction the head is facing.
      */
     public void move() {
-        // Weinfeld
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+
+        //get direction
+        Direction direction = snakeHeadStateMachine.getDirection();
+
+        //save head position in variable previous square
+        Square previousHead = getHead();
+        int x = previousHead.getX();
+        int y = previousHead.getY();
+
+        //move head one square in proper direction (assumes origin is on the top left corner)
+        Square newSquare;
+        switch (direction) {
+            case North:
+                newSquare = new Square(x, y - 1);
+                break;
+            case East:
+                newSquare = new Square(x + 1, y);
+                break;
+            case South:
+                newSquare = new Square(x, y + 1);
+                break;
+            case West:
+                newSquare = new Square(x - 1, y);
+                break;
+            default:
+                System.out.println("ERROR: Direction is not valid or is null");
+                return;
+        }
+        squares.add(0, newSquare);
+        if (!getGrow()) {
+            squares.remove(squares.size() - 1);
+        } else {
+            setGrow(false);
+        }
+
+
     }
 
     /**
@@ -83,4 +119,11 @@ public class Snake {
         throw new UnsupportedOperationException("Not Implemented Yet.");
     }
 
+    public boolean getGrow() {
+        return grow;
+    }
+
+    public void setGrow(boolean grow) {
+        this.grow = grow;
+    }
 }

@@ -27,8 +27,10 @@ public class GardenView extends JComponent {
     }
 
     void paintSnake(Graphics g) {
-        // Orlian
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        g.setColor(Color.RED);
+        for (Square s : garden.getSnake().getSquares()) {
+            g.fillRect(s.getX()*CELL_SIZE, s.getY()*CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        }
     }
 
     void paintFood(Graphics g) {
