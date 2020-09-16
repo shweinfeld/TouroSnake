@@ -16,6 +16,8 @@ public class Snake {
 
     private final SnakeHeadStateMachine snakeHeadStateMachine;
 
+    private boolean grow = false;
+
     public Snake(SnakeHeadStateMachine snakeHeadStateMachine) {
         this.snakeHeadStateMachine = snakeHeadStateMachine;
         createSnake();
@@ -40,28 +42,7 @@ public class Snake {
      * Grows the Snake one square.
      */
     public void grow() {
-
-        Square lastSquare = squares.get(squares.size()-1);
-        Square secondToLastSquare = squares.get(squares.size()-2);
-        Square newSquare;
-        if (lastSquare.getX() == secondToLastSquare.getX()) {
-            if (lastSquare.getY() + 1 == secondToLastSquare.getY()) {
-                newSquare = new Square(lastSquare.getX(), lastSquare.getY() - 1);
-            }
-            else {
-                newSquare = new Square(lastSquare.getX(), lastSquare.getY() + 1);
-            }
-        }
-        else {
-            if (lastSquare.getX() + 1 == secondToLastSquare.getX()) {
-                newSquare = new Square(lastSquare.getX() - 1, lastSquare.getY());
-            }
-            else {
-                newSquare = new Square(lastSquare.getX() + 1, lastSquare.getY());
-            }
-        }
-        squares.add(newSquare);
-
+        grow = true;
     }
 
     public void turnTo(Direction newDirection) {
