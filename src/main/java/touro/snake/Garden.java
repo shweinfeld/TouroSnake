@@ -56,17 +56,12 @@ public class Garden {
      */
     void createFoodIfNecessary() {
         //if snake ate food, create new one
-        if (snake.contains(food) == true) {
+        if (food == null) {
             food = foodFactory.newInstance();
 
-            List<Square> snakeBody = snake.getSquares();
-            //go through each square of snakeBody
-            for (Square square : snakeBody) {
-                //if food is on snakeBody
-                while (food.getX()== square.getX() && food.getY() == square.getY()) {
-                    //put it in a different place
-                    food = foodFactory.newInstance();
-                }
+            //if new food on snake, put it somewhere else
+            while (snake.contains(food)) {
+                food = foodFactory.newInstance();
             }
         }
     }

@@ -5,8 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class GardenTest {
 
@@ -18,23 +17,18 @@ public class GardenTest {
     @Test
     public void createFoodIfNecessary() {
 
-        //if
-        Snake snake = mock(Snake.class);
-        FoodFactory foodFactory = mock(FoodFactory.class);
+        //given
         Food food = mock(Food.class);
-        doReturn(food.getX()).when(food).getX();
-        doReturn(food.getY()).when(food).getY();
+        FoodFactory foodFactory = mock(FoodFactory.class);
+        Snake snake = mock(Snake.class);
+        doReturn(snake.contains(food)).when(snake).contains(food);
         Garden garden = new Garden(snake, foodFactory);
-
-        List<Square> snakeBody = snake.getSquares();
-        doReturn(snake.getSquares()).when(snake).getSquares();
 
         //when
         garden.createFoodIfNecessary();
 
         //then
-        for (Square square : snakeBody) {
-            assertTrue(food.getX() != square.getX() || food.getY() != square.getY());
-        }
+        assertNotNull(food);
+        assertFalse(snake.contains(food));
     }
 }
