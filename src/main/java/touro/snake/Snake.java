@@ -79,22 +79,18 @@ public class Snake {
      * @return true if the head of the Snake has intersected with itself, otherwise false.
      */
     public boolean eatsSelf() {
-        // Alter
-        boolean ateSelf = false;
-
-        //get coordinates of head of snake
-        int headX = this.getHead().getX();
-        int headY = this.getHead().getY();
+        Square head = getHead();
 
         //snake eats itself if it hits its body at 4th square or beyond
         //loop starts at 4th square and checks if head coordinates matches body coordinates
         for (int i = 3; i < squares.size(); i++) {
-            if ( squares.get(i).getX() == headX && squares.get(i).getY() == headY) {
-                ateSelf = true;
+            Square square = squares.get(i);
+            if (square.equals(head)) {
+                return true;
             }
 
         }
-        return ateSelf;
+        return false;
     }
 
 }

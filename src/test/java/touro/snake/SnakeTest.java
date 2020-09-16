@@ -39,15 +39,11 @@ public class SnakeTest {
     @Test
     public void eatsSelf_true() {
         //IF
-    /*    Direction direction = Direction.South;
-        SnakeHeadStateMachine headState = new SnakeHeadStateMachine(direction);
-        Snake snake = new Snake(headState);*/
-
         SnakeHeadStateMachine headStateMock = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(headStateMock);
 
-        Square middleSquare = new Square(50,20); //create a square on the snake with X and Y coordinates
-        Square headSquare = new Square(50,20); //hardcoding coordinates because I'm not using the "move" method
+        Square middleSquare = new Square(50,20);  //create a square on the snake with X and Y coordinates
+        Square headSquare = new Square(50,20);
         List<Square> list = snake.getSquares();
         list.set(4,middleSquare);
         list.set(0,headSquare);
@@ -56,7 +52,7 @@ public class SnakeTest {
        boolean val = snake.eatsSelf();
 
         //THEN
-        assertEquals(true, val);
+        assertTrue(val);
 
     }
 
@@ -65,13 +61,13 @@ public class SnakeTest {
 
         //IF
         SnakeHeadStateMachine headStateMock = mock(SnakeHeadStateMachine.class);
-        Snake snake = mock(Snake.class);
+        Snake snake = new Snake(headStateMock);
 
         //WHEN
         boolean val = snake.eatsSelf();
 
         //THEN
-        assertEquals(false, val);
+        assertFalse(val);
 
     }
 
