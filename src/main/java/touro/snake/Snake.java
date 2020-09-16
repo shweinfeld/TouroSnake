@@ -42,7 +42,7 @@ public class Snake {
      * Grows the Snake one square.
      */
     public void grow() {
-        grow = true;
+        setGrow(true);
     }
 
     public void turnTo(Direction newDirection) {
@@ -85,4 +85,11 @@ public class Snake {
         throw new UnsupportedOperationException("Not Implemented Yet.");
     }
 
+    public boolean getGrow() {
+        return grow;
+    }
+
+    public void setGrow(boolean grow) {
+        this.grow = grow;
+    }
 }
