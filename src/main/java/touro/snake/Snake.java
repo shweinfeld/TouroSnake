@@ -16,6 +16,8 @@ public class Snake {
 
     private final SnakeHeadStateMachine snakeHeadStateMachine;
 
+    private boolean grow = false;
+
     public Snake(SnakeHeadStateMachine snakeHeadStateMachine) {
         this.snakeHeadStateMachine = snakeHeadStateMachine;
         createSnake();
@@ -40,7 +42,7 @@ public class Snake {
      * Grows the Snake one square.
      */
     public void grow() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        setGrow(true);
     }
 
     public void turnTo(Direction newDirection) {
@@ -83,4 +85,11 @@ public class Snake {
         throw new UnsupportedOperationException("Not Implemented Yet.");
     }
 
+    public boolean getGrow() {
+        return grow;
+    }
+
+    public void setGrow(boolean grow) {
+        this.grow = grow;
+    }
 }

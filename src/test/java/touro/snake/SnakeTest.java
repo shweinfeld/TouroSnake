@@ -2,13 +2,28 @@ package touro.snake;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class SnakeTest {
 
     @Test
     public void grow() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+
+        //if
+        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
+        Snake snake = new Snake(state);
+       // when(state.getDirection()).thenReturn(Direction.North); //The direction of the head is irrelevant
+
+        //when
+        snake.grow();
+
+        //then
+        assertTrue(snake.getGrow());
+
     }
 
     @Test
