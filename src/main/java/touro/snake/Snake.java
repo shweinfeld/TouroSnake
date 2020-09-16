@@ -16,6 +16,8 @@ public class Snake {
 
     private final SnakeHeadStateMachine snakeHeadStateMachine;
 
+    private boolean grow = false;
+
     public Snake(SnakeHeadStateMachine snakeHeadStateMachine) {
         this.snakeHeadStateMachine = snakeHeadStateMachine;
         createSnake();
@@ -84,7 +86,12 @@ public class Snake {
                 return;
         }
         squares.add(0, newSquare);
-        squares.remove(squares.size() - 1);
+        if (!grow) {
+            squares.remove(squares.size() - 1);
+        } else {
+            grow = false;
+        }
+
 
     }
 
