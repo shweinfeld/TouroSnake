@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 
 public class GardenTest {
 
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void moveSnake() {
         /*
         Tests that snake moves and that when snake's move does not result
@@ -16,13 +16,14 @@ public class GardenTest {
         Snake snake = mock(Snake.class);
         FoodFactory foodFactory = mock(FoodFactory.class);
         Square square = mock(Square.class);
-        Food food = new Food(square);
         Garden garden = new Garden(snake, foodFactory);
-
 
         doReturn(true).when(snake).inBounds();
         doReturn(false).when(snake).eatsSelf();
         doReturn(square).when(snake).getHead();
+        //Food food = mock(Food.class);
+        //need to be able to access food object inside of
+        //Garden in order for test to pass
 
         //when
         garden.moveSnake();

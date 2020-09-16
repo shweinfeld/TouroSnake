@@ -16,7 +16,6 @@ public class Garden {
     public Garden(Snake snake, FoodFactory foodFactory) {
         this.snake = snake;
         this.foodFactory = foodFactory;
-        createFoodIfNecessary();
     }
 
     public Snake getSnake() {
@@ -55,7 +54,7 @@ public class Garden {
         }
 
         //if snake eats the food
-        if (food.getX() == snake.getHead().getX() && food.getY() == snake.getHead().getY()) {
+        if (food.equals(snake.getHead())) {
             //add square to snake
             snake.grow();
         }
