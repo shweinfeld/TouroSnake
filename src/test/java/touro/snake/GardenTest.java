@@ -19,15 +19,13 @@ public class GardenTest {
         Snake snake = mock(Snake.class);
         FoodFactory foodFactory = mock(FoodFactory.class);
         Garden garden = new Garden(snake, foodFactory);
-        when(foodFactory.newInstance()).thenReturn(garden.getFood());
+        when(foodFactory.newInstance()).thenReturn(mock(Food.class));
 
         //when
         garden.createFoodIfNecessary();
 
         //then
-        //this passes
         verify(foodFactory).newInstance();
-        //this does not pass
         assertNotNull(garden.getFood());
     }
 }
