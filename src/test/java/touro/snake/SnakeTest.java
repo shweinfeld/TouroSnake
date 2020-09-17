@@ -121,6 +121,7 @@ public class SnakeTest {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
+        when(snakeHeadStateMachine.getDirection()).thenReturn(mock(Direction.class));
         //when
         snake.move();
         //then
@@ -132,9 +133,10 @@ public class SnakeTest {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
+        when(snakeHeadStateMachine.getDirection()).thenReturn(mock(Direction.class));
+        int leaveBounds = Garden.WIDTH/GardenView.CELL_SIZE * 2;
         //when
-        //number of iterations to be determined
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < leaveBounds; i++) {
             snake.move();
         }
         //then
