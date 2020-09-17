@@ -8,7 +8,7 @@ public class SnakeMain {
 
         // Set up all class dependencies here.
 
-        SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.East);
+        SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.West);
         Snake snake = new Snake(snakeHeadStateMachine);
         FoodFactory foodFactory = new FoodFactory();
         Garden garden = new Garden(snake, foodFactory);
