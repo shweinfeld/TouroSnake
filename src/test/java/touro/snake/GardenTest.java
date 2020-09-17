@@ -29,6 +29,18 @@ public class GardenTest {
 
     @Test
     public void createFoodIfNecessary() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+
+        //given
+        Snake snake = mock(Snake.class);
+        FoodFactory foodFactory = mock(FoodFactory.class);
+        Garden garden = new Garden(snake, foodFactory);
+        when(foodFactory.newInstance()).thenReturn(mock(Food.class));
+
+        //when
+        garden.createFoodIfNecessary();
+
+        //then
+        verify(foodFactory).newInstance();
+        assertNotNull(garden.getFood());
     }
 }

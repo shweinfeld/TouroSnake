@@ -66,8 +66,15 @@ public class Garden {
      * Creates a Food if there isn't one, making sure it's not already on a Square occupied by the Snake.
      */
     void createFoodIfNecessary() {
-        // Nagel
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        //if snake ate food, create new one
+        if (food == null) {
+            food = foodFactory.newInstance();
+
+            //if new food on snake, put it somewhere else
+            while (snake.contains(food)) {
+                food = foodFactory.newInstance();
+            }
+        }
     }
 
 }
