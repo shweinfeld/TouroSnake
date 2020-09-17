@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
+
 
 public class SnakeTest {
 
@@ -81,12 +81,37 @@ public class SnakeTest {
 
     @Test
     public void eatsSelf_true() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        //IF
+        SnakeHeadStateMachine headStateMock = mock(SnakeHeadStateMachine.class);
+        Snake snake = new Snake(headStateMock);
+
+        Square middleSquare = new Square(50,20);  //create a square on the snake with X and Y coordinates
+        Square headSquare = new Square(50,20);
+        List<Square> list = snake.getSquares();
+        list.set(4,middleSquare);
+        list.set(0,headSquare);
+
+        //WHEN
+       boolean val = snake.eatsSelf();
+
+        //THEN
+        assertTrue(val);
+
     }
 
     @Test
     public void eatsSelf_false() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+
+        //IF
+        SnakeHeadStateMachine headStateMock = mock(SnakeHeadStateMachine.class);
+        Snake snake = new Snake(headStateMock);
+
+        //WHEN
+        boolean val = snake.eatsSelf();
+
+        //THEN
+        assertFalse(val);
+
     }
 
     @Test
