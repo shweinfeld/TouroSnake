@@ -26,7 +26,7 @@ public class GardenThread extends Thread {
         while (garden.advance()) {
             gardenView.repaint();
             try {
-                decrementTime();
+                decrementDelay();
                 Thread.sleep(currentDelay);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -34,7 +34,7 @@ public class GardenThread extends Thread {
         }
     }
 
-    public void decrementTime() {
+    public void decrementDelay() {
         if (currentDelay > 15) { //the smallest delay allowed
             if (currentRound < 50) {
                 currentRound++;
