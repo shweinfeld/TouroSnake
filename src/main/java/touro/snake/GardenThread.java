@@ -5,7 +5,7 @@ package touro.snake;
  */
 public class GardenThread extends Thread {
 
-    private static final int DELAY_MS = 1;
+    private static final int DELAY_MS = 100;
     private final Garden garden;
     private final GardenView gardenView;
 

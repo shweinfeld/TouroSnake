@@ -32,7 +32,7 @@ public class Snake {
         int x = Garden.WIDTH / 2;
         int y = Garden.HEIGHT / 2;
         for (int i = 0; i < START_LENGTH; i++) {
-            squares.add(new Square(x + i, y));
+            squares.add(new Square((x + i), y));
         }
     }
 
@@ -50,9 +50,9 @@ public class Snake {
     public void turnTo(Direction newDirection) {
         snakeHeadStateMachine.turnTo(newDirection);
         if (newDirection == West || newDirection == South) {
-            this.setDegrees(((this.getDegrees() - 45))%360);
+            this.setDegrees(((this.getDegrees() - 5))%360);
         } else {
-            this.setDegrees(((this.getDegrees() + 45))%360);
+            this.setDegrees(((this.getDegrees() + 5))%360);
         }
     }
 
@@ -76,7 +76,7 @@ public class Snake {
         double radians = Math.toRadians(degrees);
         //move head one square in proper direction (assumes origin is on the top left corner)
         Square newSquare;
-        newSquare = new Square((int) Math.round(x + Math.cos(radians)), (int) Math.round(y + Math.sin(radians)));
+        newSquare = new Square((int) Math.round(x + Math.cos(radians) * 1000) , (int) Math.round(y + Math.sin(radians) * 1000));
 
         squares.add(0, newSquare);
         if (!getGrow()) {
