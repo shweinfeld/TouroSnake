@@ -1,5 +1,10 @@
 package touro.snake;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+
 /**
  * A model that contains the Snake and Food and is responsible for logic of moving the Snake,
  * seeing that food has been eaten and generating new food.
@@ -56,6 +61,8 @@ public class Garden {
         if (snake.getHead().equals(food)) {
             //add square to snake
             snake.grow();
+            //make noise
+            playSound();
             //remove food
             food = null;
         }
@@ -76,5 +83,23 @@ public class Garden {
             }
         }
     }
+
+    /**
+     * Plays sound from .wav file found in resources folder
+     */
+    private void playSound() {
+        try {
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(this.getClass().getClassLoader().getResourceAsStream("EatNoise.wav"));
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
 }
