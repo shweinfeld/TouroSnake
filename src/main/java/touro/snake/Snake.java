@@ -49,10 +49,10 @@ public class Snake {
 
     public void turnTo(Direction newDirection) {
         snakeHeadStateMachine.turnTo(newDirection);
-        if (newDirection == West) {
-            this.setDegrees((Math.abs(this.getDegrees() - 45))%360);
+        if (newDirection == West || newDirection == South) {
+            this.setDegrees(((this.getDegrees() - 45))%360);
         } else {
-            this.setDegrees((Math.abs(this.getDegrees() + 45))%360);
+            this.setDegrees(((this.getDegrees() + 45))%360);
         }
     }
 
@@ -70,13 +70,13 @@ public class Snake {
 
         //save head position in variable previous square
         Square previousHead = getHead();
-        double x = previousHead.getX();
-        double y = previousHead.getY();
+        int x = previousHead.getX();
+        int y = previousHead.getY();
 
-        int radians = (int) Math.toRadians(degrees);
+        double radians = Math.toRadians(degrees);
         //move head one square in proper direction (assumes origin is on the top left corner)
         Square newSquare;
-        newSquare = new Square((int)(x + Math.cos(radians)), (int)(y + Math.sin(radians)));
+        newSquare = new Square((int) Math.round(x + Math.cos(radians)), (int) Math.round(y + Math.sin(radians)));
 
         squares.add(0, newSquare);
         if (!getGrow()) {

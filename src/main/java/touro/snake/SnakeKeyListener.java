@@ -26,12 +26,12 @@ public class SnakeKeyListener extends KeyAdapter {
                 snake.turnTo(Direction.East);
 
                 break;
-//            case KeyEvent.VK_DOWN:
-//                snake.turnTo(Direction.South);
-//                break;
-//            case KeyEvent.VK_UP:
-//                snake.turnTo(Direction.North);
-//                break;
+            case KeyEvent.VK_DOWN:
+                snake.turnTo(Direction.South);
+                break;
+            case KeyEvent.VK_UP:
+                snake.turnTo(Direction.North);
+                break;
         }
     }
 }
