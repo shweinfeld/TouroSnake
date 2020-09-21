@@ -27,7 +27,7 @@ public class GardenView extends JComponent {
     }
 
     void paintSnake(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(Color.BLACK);
         for (Square s : garden.getSnake().getSquares()) {
             g.fillRect(s.getX()*CELL_SIZE, s.getY()*CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
@@ -37,7 +37,7 @@ public class GardenView extends JComponent {
         // Berger
         if (garden.getFood() != null) {
             Food food = garden.getFood();
-            g.setColor(Color.LIGHT_GRAY);
+            g.setColor(Color.RED);
 
             int x = food.getX() * CELL_SIZE;
             int y = food.getY() * CELL_SIZE;

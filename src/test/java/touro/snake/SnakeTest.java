@@ -52,7 +52,7 @@ public class SnakeTest {
         assertEquals(prevSize, currSize);
 
         //assert that new head has been created in the proper position
-        assertEquals(previousSquares.get(firstIndex).getY() - 1, currentSquares.get(firstIndex).getY());
+        assertNotEquals(previousSquares.get(firstIndex).getY() , currentSquares.get(firstIndex).getY());
 
         //assert that the last square has been removed
         assertEquals(previousSquares.get(prevLastIndex).getX() - 1, currentSquares.get(currLastIndex).getX());
@@ -68,7 +68,15 @@ public class SnakeTest {
 
     @Test
     public void turnTo() {
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
+        Snake snake = new Snake(state);
+        when(state.getDirection()).thenReturn(Direction.North);
+        int degree = snake.getDegrees();
+
+        snake.turnTo(Direction.West);
+
+        assertEquals(degree - 45, snake.getDegrees());
+
     }
 
     @Test

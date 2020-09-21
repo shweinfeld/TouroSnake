@@ -18,6 +18,8 @@ public class Snake {
 
     private boolean grow = false;
 
+    private int degrees = 90;
+
     public Snake(SnakeHeadStateMachine snakeHeadStateMachine) {
         this.snakeHeadStateMachine = snakeHeadStateMachine;
         createSnake();
@@ -47,6 +49,11 @@ public class Snake {
 
     public void turnTo(Direction newDirection) {
         snakeHeadStateMachine.turnTo(newDirection);
+        if (newDirection == West) {
+            this.setDegrees((Math.abs(this.getDegrees() - 45))%360);
+        } else {
+            this.setDegrees((Math.abs(this.getDegrees() + 45))%360);
+        }
     }
 
     public Square getHead() {
@@ -63,28 +70,14 @@ public class Snake {
 
         //save head position in variable previous square
         Square previousHead = getHead();
-        int x = previousHead.getX();
-        int y = previousHead.getY();
+        double x = previousHead.getX();
+        double y = previousHead.getY();
 
+        int radians = (int) Math.toRadians(degrees);
         //move head one square in proper direction (assumes origin is on the top left corner)
         Square newSquare;
-        switch (direction) {
-            case North:
-                newSquare = new Square(x, y - 1);
-                break;
-            case East:
-                newSquare = new Square(x + 1, y);
-                break;
-            case South:
-                newSquare = new Square(x, y + 1);
-                break;
-            case West:
-                newSquare = new Square(x - 1, y);
-                break;
-            default:
-                System.out.println("ERROR: Direction is not valid or is null");
-                return;
-        }
+        newSquare = new Square((int)(x + Math.cos(radians)), (int)(y + Math.cos(radians)));
+
         squares.add(0, newSquare);
         if (!getGrow()) {
             squares.remove(squares.size() - 1);
@@ -140,4 +133,9 @@ public class Snake {
     public void setGrow(boolean grow) {
         this.grow = grow;
     }
+
+    public int getDegrees() { return degrees; }
+
+    public void setDegrees(int degrees) { this.degrees = degrees; }
+
 }

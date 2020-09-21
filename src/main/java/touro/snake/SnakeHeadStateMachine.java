@@ -26,21 +26,8 @@ public class  SnakeHeadStateMachine {
      * @param newDirection
      */
     public void turnTo(Direction newDirection) {
-        boolean dirVert = this.checkOrientation(direction);
-        boolean newDirVert = this.checkOrientation(newDirection);
 
-        if((dirVert && newDirVert)||(!dirVert && !newDirVert)){
-            return;
-        }
-        else{
             direction = newDirection;
-        }
-    }
-    public boolean checkOrientation(Direction dir){
-        if (dir == North || dir == South){
-            return true;
-        }
-        return false;
     }
 
 }
