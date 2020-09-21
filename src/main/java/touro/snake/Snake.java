@@ -95,6 +95,9 @@ public class Snake {
      * @return true if the Food intersects with the Snake, otherwise false.
      */
     public boolean contains(Food food) {
+        if(food == null) {
+            return false;
+        }
         int cellsize = GardenView.CELL_SIZE;
         int headX = getHead().getX() / 100;
         int headY = getHead().getY() / 100;
