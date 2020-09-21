@@ -18,7 +18,7 @@ public class Snake {
 
     private boolean grow = false;
 
-    private int degrees = 90;
+    private int degrees = 180;
 
     public Snake(SnakeHeadStateMachine snakeHeadStateMachine) {
         this.snakeHeadStateMachine = snakeHeadStateMachine;
@@ -76,7 +76,7 @@ public class Snake {
         int radians = (int) Math.toRadians(degrees);
         //move head one square in proper direction (assumes origin is on the top left corner)
         Square newSquare;
-        newSquare = new Square((int)(x + Math.cos(radians)), (int)(y + Math.cos(radians)));
+        newSquare = new Square((int)(x + Math.cos(radians)), (int)(y + Math.sin(radians)));
 
         squares.add(0, newSquare);
         if (!getGrow()) {
