@@ -6,8 +6,8 @@ package touro.snake;
  */
 public class Garden {
 
-    public static final int WIDTH = 100;
-    public static final int HEIGHT = 40;
+    public static final int WIDTH = 100000;
+    public static final int HEIGHT = 40000;
 
     private final Snake snake;
     private final FoodFactory foodFactory;

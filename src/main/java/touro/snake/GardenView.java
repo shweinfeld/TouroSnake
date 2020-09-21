@@ -6,7 +6,7 @@ import java.awt.*;
 public class GardenView extends JComponent {
 
     private final Garden garden;
-    public static final int CELL_SIZE = 10;
+    public static final int CELL_SIZE = 1;
 
     public GardenView(Garden garden) {
         this.garden = garden;
@@ -29,7 +29,7 @@ public class GardenView extends JComponent {
     void paintSnake(Graphics g) {
         g.setColor(Color.BLACK);
         for (Square s : garden.getSnake().getSquares()) {
-            g.fillRect(s.getX()*CELL_SIZE, s.getY()*CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            g.fillRect(s.getX()/100, s.getY()/100, CELL_SIZE, CELL_SIZE);
         }
     }
 
@@ -39,8 +39,8 @@ public class GardenView extends JComponent {
             Food food = garden.getFood();
             g.setColor(Color.RED);
 
-            int x = food.getX() * CELL_SIZE;
-            int y = food.getY() * CELL_SIZE;
+            int x = food.getX() / 100;
+            int y = food.getY() / 100;
             g.fillRect(x, y, CELL_SIZE, CELL_SIZE);
         }
     }
