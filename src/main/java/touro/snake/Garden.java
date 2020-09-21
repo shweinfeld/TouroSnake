@@ -62,7 +62,13 @@ public class Garden {
             //add square to snake
             snake.grow();
             //make noise
-            playSound();
+            try {
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(this.getClass().getClassLoader().getResourceAsStream("EatNoise.wav"));
+                playSound(audioIn);
+            } catch (Exception e) {
+                System.out.println("Error found when trying to play EatNoise");
+                e.printStackTrace();
+            }
             //remove food
             food = null;
         }
@@ -87,9 +93,8 @@ public class Garden {
     /**
      * Plays sound from .wav file found in resources folder
      */
-    private void playSound() {
+    private void playSound(AudioInputStream audioIn) {
         try {
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(this.getClass().getClassLoader().getResourceAsStream("EatNoise.wav"));
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
             clip.start();
