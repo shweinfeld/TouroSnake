@@ -1,5 +1,7 @@
 package touro.snake;
 
+import java.awt.*;
+import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +95,16 @@ public class Snake {
      * @return true if the Food intersects with the Snake, otherwise false.
      */
     public boolean contains(Food food) {
-        return squares.contains(food);
+        int cellsize = GardenView.CELL_SIZE;
+        int headX = getHead().getX() / 100;
+        int headY = getHead().getY() / 100;
+        Rectangle headSquare = new Rectangle(headX,headY,cellsize, cellsize);
+        int foodX = food.getX() / 100;
+        int foodY = food.getY() / 100;
+        Rectangle foodSquare = new Rectangle(foodX, foodY, cellsize, cellsize);
+        return headSquare.intersects(foodSquare);
+
+
     }
 
     /**

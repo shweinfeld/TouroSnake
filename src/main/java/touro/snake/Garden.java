@@ -53,7 +53,7 @@ public class Garden {
         }
 
         //if snake eats the food
-        if (snake.getHead().equals(food)) {
+        if (snake.contains(food)) {
             //add square to snake
             snake.grow();
             //remove food
