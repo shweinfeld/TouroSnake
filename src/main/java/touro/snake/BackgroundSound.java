@@ -3,7 +3,7 @@ package touro.snake;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import java.io.File;
+import java.io.InputStream;
 
 public class BackgroundSound {
 
@@ -11,9 +11,10 @@ public class BackgroundSound {
 
         try {
 
-            File musicPath = new File("src/main/resources/TheSpectre.wav");
+            String musicPath = "TheSpectre.wav";
 
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(musicPath);
+            AudioInputStream audioInput = AudioSystem.getAudioInputStream(inputStream);
             Clip clip = AudioSystem.getClip();
             clip.open(audioInput);
             clip.start();
