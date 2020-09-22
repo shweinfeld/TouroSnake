@@ -3,6 +3,7 @@ package touro.snake;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import java.io.InputStream;
 
 
 /**
@@ -17,10 +18,20 @@ public class Garden {
     private final Snake snake;
     private final FoodFactory foodFactory;
     private Food food;
+    private InputStream inputStream;
+    private Clip clip;
 
-    public Garden(Snake snake, FoodFactory foodFactory) {
+    public Garden(Snake snake, FoodFactory foodFactory, String fileName) {
         this.snake = snake;
         this.foodFactory = foodFactory;
+        inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
+        try {
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(inputStream);
+            clip = AudioSystem.getClip();
+            clip.open(audioIn);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public Snake getSnake() {
@@ -62,13 +73,7 @@ public class Garden {
             //add square to snake
             snake.grow();
             //make noise
-            try {
-                AudioInputStream audioIn = AudioSystem.getAudioInputStream(this.getClass().getClassLoader().getResourceAsStream("EatNoise.wav"));
-                playSound(audioIn);
-            } catch (Exception e) {
-                System.out.println("Error found when trying to play EatNoise");
-                e.printStackTrace();
-            }
+            playSound();
             //remove food
             food = null;
         }
@@ -93,12 +98,13 @@ public class Garden {
     /**
      * Plays sound from .wav file found in resources folder
      */
-    private void playSound(AudioInputStream audioIn) {
+    private void playSound() {
         try {
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioIn);
+            clip.setMicrosecondPosition(0); //restart clip
             clip.start();
+
         } catch (Exception e) {
+            System.out.println("Error found when trying to play EatNoise");
             e.printStackTrace();
         }
     }
