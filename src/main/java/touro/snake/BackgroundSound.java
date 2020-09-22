@@ -11,7 +11,7 @@ public class BackgroundSound {
 
         try {
 
-            File musicPath = new File("TheSpectre.wav");
+            File musicPath = new File("src/test/resources/TheSpectre.wav");
 
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
             Clip clip = AudioSystem.getClip();
