@@ -7,6 +7,8 @@ import java.io.InputStream;
 
 public class BackgroundSound {
 
+    Clip clip;
+
     public void playMusic() {
 
         try {
@@ -15,7 +17,7 @@ public class BackgroundSound {
 
             InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(musicPath);
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(inputStream);
-            Clip clip = AudioSystem.getClip();
+            this.clip = AudioSystem.getClip();
             clip.open(audioInput);
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
