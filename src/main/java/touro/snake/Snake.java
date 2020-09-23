@@ -5,8 +5,6 @@ import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
 
-import static touro.snake.Direction.*;
-
 /**
  * Model object that represents the Snake and allows it to grow, turn and move.
  */
@@ -16,14 +14,11 @@ public class Snake {
 
     private final List<Square> squares = new ArrayList<>();
 
-    private final SnakeHeadStateMachine snakeHeadStateMachine;
-
     private boolean grow = false;
 
     private int degrees = 180;
 
-    public Snake(SnakeHeadStateMachine snakeHeadStateMachine) {
-        this.snakeHeadStateMachine = snakeHeadStateMachine;
+    public Snake() {
         createSnake();
     }
 
@@ -49,15 +44,6 @@ public class Snake {
         setGrow(true);
     }
 
-    public void turnTo(Direction newDirection) {
-        snakeHeadStateMachine.turnTo(newDirection);
-        if (newDirection == West || newDirection == South) {
-            this.setDegrees(((this.getDegrees() - 5))%360);
-        } else {
-            this.setDegrees(((this.getDegrees() + 5))%360);
-        }
-    }
-
     public Square getHead() {
         return squares.get(0);
     }
@@ -68,7 +54,7 @@ public class Snake {
     public void move() {
 
         //get direction
-        Direction direction = snakeHeadStateMachine.getDirection();
+        //Direction direction = snakeHeadStateMachine.getDirection();
 
         //save head position in variable previous square
         Square previousHead = getHead();

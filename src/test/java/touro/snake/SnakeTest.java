@@ -2,6 +2,7 @@ package touro.snake;
 
 import org.junit.Test;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.*;
@@ -16,9 +17,7 @@ public class SnakeTest {
     public void grow() {
 
         //if
-        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
-        Snake snake = new Snake(state);
-       // when(state.getDirection()).thenReturn(Direction.North); //The direction of the head is irrelevant
+        Snake snake = new Snake();
 
         //when
         snake.grow();
@@ -32,9 +31,7 @@ public class SnakeTest {
     public void move() {
 
         //if
-        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
-        Snake snake = new Snake(state);
-        when(state.getDirection()).thenReturn(Direction.North);
+        Snake snake = new Snake();
         List<Square> previousSquares = new ArrayList<>(snake.getSquares());
         int prevSize = previousSquares.size();
         int prevLastIndex = previousSquares.size() - 1;
@@ -52,7 +49,8 @@ public class SnakeTest {
         assertEquals(prevSize, currSize);
 
         //assert that new head has been created in the proper position
-        assertNotEquals(previousSquares.get(firstIndex).getY() , currentSquares.get(firstIndex).getY());
+        assertEquals(previousSquares.get(firstIndex).getY() , currentSquares.get(firstIndex).getY());
+        assertEquals(previousSquares.get(firstIndex).getX() - 1000 , currentSquares.get(firstIndex).getX());
 
         //assert that the last square has been removed
         assertEquals(previousSquares.get(prevLastIndex).getX() - 1, currentSquares.get(currLastIndex).getX());
@@ -63,19 +61,6 @@ public class SnakeTest {
             Square currSquare = currentSquares.get(i + 1);
             assertEquals(prevSquare,  currSquare);
         }
-
-    }
-
-    @Test
-    public void turnTo() {
-        SnakeHeadStateMachine state = mock(SnakeHeadStateMachine.class);
-        Snake snake = new Snake(state);
-        when(state.getDirection()).thenReturn(Direction.North);
-        int degree = snake.getDegrees();
-
-        snake.turnTo(Direction.West);
-
-        assertEquals(degree - 45, snake.getDegrees());
 
     }
 
@@ -92,8 +77,7 @@ public class SnakeTest {
     @Test
     public void eatsSelf_true() {
         //IF
-        SnakeHeadStateMachine headStateMock = mock(SnakeHeadStateMachine.class);
-        Snake snake = new Snake(headStateMock);
+        Snake snake = new Snake();
 
         Square middleSquare = new Square(50,20);  //create a square on the snake with X and Y coordinates
         Square headSquare = new Square(50,20);
@@ -113,8 +97,7 @@ public class SnakeTest {
     public void eatsSelf_false() {
 
         //IF
-        SnakeHeadStateMachine headStateMock = mock(SnakeHeadStateMachine.class);
-        Snake snake = new Snake(headStateMock);
+        Snake snake = new Snake();
 
         //WHEN
         boolean val = snake.eatsSelf();
@@ -127,8 +110,7 @@ public class SnakeTest {
     @Test
     public void inBounds_true() {
         //given
-        SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
-        Snake snake = new Snake(snakeHeadStateMachine);
+        Snake snake = new Snake();
         //when
         snake.move();
         //then
@@ -138,8 +120,7 @@ public class SnakeTest {
     @Test
     public void inBounds_false() {
         //given
-        SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
-        Snake snake = new Snake(snakeHeadStateMachine);
+        Snake snake = new Snake();
         //when
         //number of iterations to be determined
         for (int i = 0; i < 100; i++) {
