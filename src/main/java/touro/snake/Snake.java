@@ -1,7 +1,6 @@
 package touro.snake;
 
 import java.awt.*;
-import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,18 +52,17 @@ public class Snake {
      */
     public void move() {
 
-        //get direction
-        //Direction direction = snakeHeadStateMachine.getDirection();
-
         //save head position in variable previous square
         Square previousHead = getHead();
         int x = previousHead.getX();
         int y = previousHead.getY();
 
         double radians = Math.toRadians(degrees);
-        //move head one square in proper direction (assumes origin is on the top left corner)
+
         Square newSquare;
-        newSquare = new Square((int) Math.round(x + Math.cos(radians) * 1000) , (int) Math.round(y + Math.sin(radians) * 1000));
+        int newX = (int) Math.round(x + Math.cos(radians) * 1000);
+        int newY = (int) Math.round(y + Math.sin(radians) * 1000);
+        newSquare = new Square( newX, newY);
 
         squares.add(0, newSquare);
         if (!getGrow()) {
