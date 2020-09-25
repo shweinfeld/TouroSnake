@@ -18,20 +18,12 @@ public class Garden {
     private final Snake snake;
     private final FoodFactory foodFactory;
     private Food food;
-    private InputStream inputStream;
     private Clip clip;
 
-    public Garden(Snake snake, FoodFactory foodFactory, String fileName) {
+    public Garden(Snake snake, FoodFactory foodFactory, Clip clip) {
         this.snake = snake;
         this.foodFactory = foodFactory;
-        inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
-        try {
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(inputStream);
-            clip = AudioSystem.getClip();
-            clip.open(audioIn);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        this.clip = clip;
     }
 
     public Snake getSnake() {
