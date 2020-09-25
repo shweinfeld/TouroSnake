@@ -1,5 +1,6 @@
 package touro.snake;
 
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -31,6 +32,12 @@ public class SnakeMain {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        GardenThread thread = new GardenThread(garden, gardenView);
+        thread.start();
+        BackgroundSound backgroundSound = new BackgroundSound();
+
+        new SnakeFrame(gardenView, snakeKeyListener, backgroundSound).setVisible(true);
 
     }
 
