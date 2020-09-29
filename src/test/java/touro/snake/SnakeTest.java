@@ -116,11 +116,11 @@ public class SnakeTest {
 
     }
 
-    //this should still pass, despite my changes. Can't confirm because can't run tests
     @Test
     public void inBounds_true() {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
+        when(snakeHeadStateMachine.getDirection()).thenReturn(Direction.West);
         Snake snake = new Snake(snakeHeadStateMachine);
         //when
         snake.move();
@@ -128,11 +128,11 @@ public class SnakeTest {
         assertTrue(snake.inBounds());
     }
 
-    //this should still pass, despite my changes. Can't confirm because can't run tests
     @Test
     public void inBounds_false() {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
+        when(snakeHeadStateMachine.getDirection()).thenReturn(Direction.West);
         Snake snake = new Snake(snakeHeadStateMachine);
         //when
         //number of iterations to be determined
