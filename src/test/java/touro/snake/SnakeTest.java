@@ -120,6 +120,7 @@ public class SnakeTest {
     public void inBounds_true() {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
+        when(snakeHeadStateMachine.getDirection()).thenReturn(Direction.West);
         Snake snake = new Snake(snakeHeadStateMachine);
         //when
         snake.move();
@@ -131,6 +132,7 @@ public class SnakeTest {
     public void inBounds_false() {
         //given
         SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
+        when(snakeHeadStateMachine.getDirection()).thenReturn(Direction.West);
         Snake snake = new Snake(snakeHeadStateMachine);
         //when
         //number of iterations to be determined
