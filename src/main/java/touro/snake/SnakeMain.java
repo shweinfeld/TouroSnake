@@ -27,11 +27,18 @@ public class SnakeMain {
 
             GardenThread thread = new GardenThread(garden, gardenView);
             thread.start();
-            BackgroundSound backgroundSound = new BackgroundSound();
-            new SnakeFrame(gardenView, snakeKeyListener, backgroundSound).setVisible(true);
+
+            new SnakeFrame(gardenView, snakeKeyListener).setVisible(true);
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        GardenThread thread = new GardenThread(garden, gardenView);
+        thread.start();
+        BackgroundSound backgroundSound = new BackgroundSound();
+
+        new SnakeFrame(gardenView, snakeKeyListener, backgroundSound).setVisible(true);
+
     }
 
 }
