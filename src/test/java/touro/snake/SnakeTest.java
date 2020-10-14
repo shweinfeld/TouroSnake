@@ -119,8 +119,9 @@ public class SnakeTest {
     @Test
     public void inBounds_true() {
         //given
-        SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.East);
+        SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
+        when(snakeHeadStateMachine.getDirection()).thenReturn(mock(Direction.class));
         //when
         snake.move();
         //then
@@ -130,8 +131,9 @@ public class SnakeTest {
     @Test
     public void inBounds_false() {
         //given
-        SnakeHeadStateMachine snakeHeadStateMachine = new SnakeHeadStateMachine(Direction.East);
+        SnakeHeadStateMachine snakeHeadStateMachine = mock(SnakeHeadStateMachine.class);
         Snake snake = new Snake(snakeHeadStateMachine);
+        when(snakeHeadStateMachine.getDirection()).thenReturn(mock(Direction.class));
         int leaveBounds = Garden.WIDTH;
         //when
         for (int i = 0; i < leaveBounds; i++) {
