@@ -71,7 +71,7 @@ public class AStarStrategy implements SnakeStrategy {
             direction = Direction.East;
         }
         else if(path.getX() == head.getX() - 1 && path.getY() == head.getY()) {
-            direction = Direction.East;
+            direction = Direction.West;
         }
         else {
             throw new RuntimeException("ERROR: There is no where to turn");
