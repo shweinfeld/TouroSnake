@@ -60,23 +60,7 @@ public class AStarStrategy implements SnakeStrategy {
             current = current.getParent();
         }
         //now move to first node in path
-        Direction direction;
-        if(path.getX() == head.getX() && path.getY() == head.getY() - 1) {
-            direction = Direction.North;
-        }
-        else if(path.getX() == head.getX() && path.getY()== head.getY() + 1 ) {
-            direction = Direction.South;
-        }
-        else if(path.getX() == head.getX() + 1 && path.getY() == head.getY()) {
-            direction = Direction.East;
-        }
-        else if(path.getX() == head.getX() - 1 && path.getY() == head.getY()) {
-            direction = Direction.West;
-        }
-        else {
-            throw new RuntimeException("ERROR: There is no where to turn");
-        }
-
+        Direction direction = head.directionTo(path);
         snake.turnTo(direction);
 
     }
