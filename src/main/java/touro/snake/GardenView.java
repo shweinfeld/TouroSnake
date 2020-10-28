@@ -1,5 +1,7 @@
 package touro.snake;
 
+import touro.snake.strategy.astar.weinfeld.AStarStrategy;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -18,6 +20,22 @@ public class GardenView extends JComponent {
         paintGrass(g);
         paintFood(g);
         paintSnake(g);
+        paintSearchSpace(g);
+        paintPath(g);
+    }
+
+    private void paintPath(Graphics g) {
+        g.setColor(Color.cyan);
+        for (Square s : garden.getSnake().getStrategy().getPath()) {
+            g.fillRect(s.getX()*CELL_SIZE, s.getY()*CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        }
+    }
+
+    void paintSearchSpace(Graphics g) {
+        g.setColor(Color.gray);
+        for (Square s : garden.getSnake().getStrategy().getSearchSpace()) {
+            g.fillRect(s.getX()*CELL_SIZE, s.getY()*CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        }
     }
 
     void paintGrass(Graphics g) {
