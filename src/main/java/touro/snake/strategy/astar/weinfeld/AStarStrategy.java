@@ -5,6 +5,7 @@ import touro.snake.strategy.SnakeStrategy;
 import touro.snake.strategy.astar.Node;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -77,20 +78,12 @@ public class AStarStrategy implements SnakeStrategy {
 
     @Override
     public List<Square> getPath() {
-        List<Square> path = new ArrayList<>();
-        for (Node node: pathList) {
-            path.add(new Square(node.getX(), node.getY()));
-        }
-        return path;
+        return List.copyOf(pathList);
     }
 
     @Override
     public List<Square> getSearchSpace() {
-        List<Square> searchSpace = new ArrayList<>();
-        for (Node node: closed) {
-            searchSpace.add(new Square(node.getX(), node.getY()));
-        }
-        return searchSpace;
+        return List.copyOf(closed);
     }
 
 
