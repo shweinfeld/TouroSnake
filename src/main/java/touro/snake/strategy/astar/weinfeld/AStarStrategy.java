@@ -12,9 +12,9 @@ import java.util.List;
 public class AStarStrategy implements SnakeStrategy {
 
 
-    List<Node> closed = new ArrayList<Node>();
-    List<Node> pathList = new ArrayList<Node>();
-    List<Node> open = new ArrayList<Node>();
+    private List<Node> closed = new ArrayList<Node>();
+    private List<Node> pathList = new ArrayList<Node>();
+    private List<Node> open = new ArrayList<Node>();
     @Override
     public void turnSnake(Snake snake, Garden garden) {
         closed.clear();
@@ -85,6 +85,5 @@ public class AStarStrategy implements SnakeStrategy {
     public List<Square> getSearchSpace() {
         return List.copyOf(closed);
     }
-
-
+    
 }
